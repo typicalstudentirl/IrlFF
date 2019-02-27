@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IrlFF.Data", "IrlFF.Data\IrlFF.Data.csproj", "{B2DE8F9A-2D1A-4E34-9443-4E1B3A9DB376}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IrlFF.Web", "IrlFF.Web\IrlFF.Web.csproj", "{E912DC3A-0B9F-4036-B93A-845B83512E96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IrlFF.Test", "IrlFF.Test\IrlFF.Test.csproj", "{1D4FE0C9-2A28-4F5C-AF0C-44F110DF3FEA}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2DE8F9A-2D1A-4E34-9443-4E1B3A9DB376}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2DE8F9A-2D1A-4E34-9443-4E1B3A9DB376}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2DE8F9A-2D1A-4E34-9443-4E1B3A9DB376}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2DE8F9A-2D1A-4E34-9443-4E1B3A9DB376}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E912DC3A-0B9F-4036-B93A-845B83512E96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E912DC3A-0B9F-4036-B93A-845B83512E96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E912DC3A-0B9F-4036-B93A-845B83512E96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E912DC3A-0B9F-4036-B93A-845B83512E96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D4FE0C9-2A28-4F5C-AF0C-44F110DF3FEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D4FE0C9-2A28-4F5C-AF0C-44F110DF3FEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D4FE0C9-2A28-4F5C-AF0C-44F110DF3FEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D4FE0C9-2A28-4F5C-AF0C-44F110DF3FEA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
