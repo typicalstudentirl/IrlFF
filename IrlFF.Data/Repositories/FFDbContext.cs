@@ -18,11 +18,16 @@ namespace IrlFF.Data.Repositories
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Team>()
+                .Property(t => t.TotalPoints)
+                .HasDefaultValue(0);
+
             modelBuilder.Entity<TeamPlayer>()
                 .HasKey(tp => new { tp.TeamId, tp.PlayerId });
 
             modelBuilder.Entity<Club>()
-                .HasData(new Club { Id = 1, ClubName = "Bohemians" });
+                .HasData(new Club { Id = 1, ClubName = "Derry City FC" },
+                         new Club { Id = 2, ClubName = "Cork City" });
         }
     }
 }

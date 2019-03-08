@@ -1,9 +1,7 @@
 ﻿using IrlFF.Data.Models;
 using IrlFF.Data.Repositories;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace IrlFF.Data.Services
 {

@@ -2,7 +2,10 @@
 {
     public enum Position
     {
-        Goalkeeper, Defender, Midfielder, Attacker
+        Goalkeeper = 1,
+        Defender = 2 ,
+        Midfielder = 3,
+        Attacker = 4
     }
 
     public class Player
@@ -26,7 +29,7 @@
 
         public Position Position { get; set; }
 
-        public int ClubId { get; set; }
+        public int FK_Player_Club_ClubId { get; set; }
 
         public Club Club { get; set; }
 

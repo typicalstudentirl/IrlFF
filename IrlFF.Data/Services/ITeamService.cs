@@ -13,7 +13,7 @@ namespace IrlFF.Data.Services
 
         Team GetTeamById(int id);
 
-        IList<Team> GetTeams(string orderBy);
+        IList<Team> GetTeams(string orderBy = null);
 
     }
 }

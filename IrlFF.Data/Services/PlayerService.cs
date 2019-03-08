@@ -46,8 +46,14 @@ namespace IrlFF.Data.Services
                     return ctx.Player.OrderBy(p => p.TotalPoints).ToList();
                 case "PlayerValue":
                     return ctx.Player.OrderBy(m => m.PlayerValue).ToList();
-                case "Position":
-                    return ctx.Player.OrderBy(p => p.Position).ToList();
+                case "Goalkeeper":
+                    return ctx.Player.Where(p => p.Position == Position.Goalkeeper).ToList();
+                case "Defender":
+                    return ctx.Player.Where(p => p.Position == Position.Defender).ToList();
+                case "Midfielder":
+                    return ctx.Player.Where(p => p.Position == Position.Midfielder).ToList();
+                case "Attacker":
+                    return ctx.Player.Where(p => p.Position == Position.Attacker).ToList();
                 default:
                     return ctx.Player.ToList();
             }
@@ -55,7 +61,7 @@ namespace IrlFF.Data.Services
 
         public List<Player> GetPlayersByClub(int ClubId)
         {
-            return ctx.Player.Include(p => p.ClubId).Where(p => p.ClubId.Equals(ClubId)).ToList();
+            return ctx.Player.Include(p => p.FK_Player_Club_ClubId).Where(p => p.FK_Player_Club_ClubId.Equals(ClubId)).ToList();
         }
 
         public bool UpdatePlayer(Player p)
