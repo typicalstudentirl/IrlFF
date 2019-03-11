@@ -61,15 +61,35 @@ namespace IrlFF.Data.Services
 
         public List<Player> GetPlayersByClub(int ClubId)
         {
-            return ctx.Player.Include(p => p.FK_Player_Club_ClubId).Where(p => p.FK_Player_Club_ClubId.Equals(ClubId)).ToList();
+            return ctx.Player.Include(p => p.Club).Where(p => p.ClubId.Equals(ClubId)).ToList();
         }
 
         public bool UpdatePlayer(Player p)
         {
-            ctx.Attach(p).State = EntityState.Modified;
+            Player player = GetPlayerById(p.Id);
+            if (player == null)
+            {
+                return false;
+            }
+
+            ctx.Attach(p);
+            ctx.Entry(p).State = EntityState.Modified;
             ctx.SaveChanges();
             return true;
         }
+
+
+        //public void Update<T>(T item) where T : Entity
+        //{
+        //    // assume Entity base class have an Id property for all items
+        //    var entity = _collection.Find(item.Id);
+        //    if (entity == null)
+        //    {
+        //        return;
+        //    }
+
+        //    _context.Entry(entity).CurrentValues.SetValues(item);
+        //}
 
         public bool DeletePlayer(int id)
         {

@@ -1,4 +1,6 @@
-﻿namespace IrlFF.Data.Models
+﻿using System.Collections.Generic;
+
+namespace IrlFF.Data.Models
 {
     public enum Position
     {
@@ -8,7 +10,7 @@
         Attacker = 4
     }
 
-    public class Player
+    public class Player //Dependent entity
     {
         public Player()
         {
@@ -29,9 +31,11 @@
 
         public Position Position { get; set; }
 
-        public int FK_Player_Club_ClubId { get; set; }
+        public int ClubId { get; set; } //Foreign Key property
 
-        public Club Club { get; set; }
+        public Club Club { get; set; } //Reference property
+
+        public ICollection<TeamPlayer> TeamPlayers { get; set; }
 
     }
 }

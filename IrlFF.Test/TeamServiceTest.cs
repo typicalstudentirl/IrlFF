@@ -31,7 +31,7 @@ namespace IrlFF.Test
         [Fact]
         public void Add_New_Clubs_To_Empty_DB_Should_Be_Found()
         {
-            IList<Team> teamTest = new List<Team>();
+            IList<Team> teamTest = svc.GetTeams();
 
             Team t = new Team { Owner = "Stephen McGowan", TeamName = "Galacticos" };
             teamTest.Add(t);

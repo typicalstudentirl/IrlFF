@@ -1,5 +1,8 @@
 ﻿using IrlFF.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 
 namespace IrlFF.Data.Repositories
 {
@@ -13,7 +16,8 @@ namespace IrlFF.Data.Repositories
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                .UseSqlServer(@"Server = (localdb)\mssqllocaldb; Database = IrlFF; Trusted_Connection = True; ConnectRetryCount = 0;");
+                .UseSqlServer(@"Server = (localdb)\mssqllocaldb; Database = IrlFF; Trusted_Connection = True; ConnectRetryCount = 0;")
+                .UseLoggerFactory(GetLoggerFactory());
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,10 +28,17 @@ namespace IrlFF.Data.Repositories
 
             modelBuilder.Entity<TeamPlayer>()
                 .HasKey(tp => new { tp.TeamId, tp.PlayerId });
+        }
 
-            modelBuilder.Entity<Club>()
-                .HasData(new Club { Id = 1, ClubName = "Derry City FC" },
-                         new Club { Id = 2, ClubName = "Cork City" });
+        private ILoggerFactory GetLoggerFactory()
+        {
+            IServiceCollection serviceCollection = new ServiceCollection();
+            serviceCollection.AddLogging(builder =>
+                builder.AddConsole()
+                    .AddFilter(DbLoggerCategory.Database.Command.Name,
+                        LogLevel.Information));
+            return serviceCollection.BuildServiceProvider()
+                .GetService<ILoggerFactory>();
         }
     }
 }

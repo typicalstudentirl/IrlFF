@@ -15,6 +15,8 @@ namespace IrlFF.Data.Services
 
         Player AddPlayer(Player p);
 
+        bool UpdatePlayer(Player p);
+
         bool DeletePlayer(int id);
     }
 }

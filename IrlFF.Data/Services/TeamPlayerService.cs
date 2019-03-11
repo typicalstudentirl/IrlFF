@@ -32,10 +32,12 @@ namespace IrlFF.Data.Services
             return tp;
         }
 
-        public IList<TeamPlayer> GetPlayersByTeamId(int id)
+        public IList<TeamPlayer> GetPlayersByTeamId(int teamId)
         {
-            return ctx.TeamPlayer.Include(tp => tp.PlayerId)
-                .Where(tp => tp.TeamId.Equals(id)).ToList();
+            return ctx.TeamPlayer.Include(tp => tp.Player)
+                .Include(teamPlayer => teamPlayer.Team)
+                .Include(teamPlayer => teamPlayer.Player)
+                .Where(teamPlayer => teamPlayer.TeamId.Equals(teamId)).ToList();
         }
     }
 }

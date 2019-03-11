@@ -31,19 +31,13 @@ namespace IrlFF.Test
         [Fact]
         public void Add_New_Clubs_To_Empty_DB_Should_Be_Found()
         {
-            IList<Club> clubTest = new List<Club>();
-
-            Club c = new Club { ClubName = "Bohemian FC" };
-            clubTest.Add(c);
-            Club c2 = new Club { ClubName = "Dundalk FC" };
-            clubTest.Add(c2);
+            Club c = new Club { ClubName = "Test Club" };
 
             c = svc.AddClub(c);
-            c2 = svc.AddClub(c2);
 
             IList<Club> clubs = svc.GetClubs();
-           
-            Assert.Equal(clubs, clubTest);
+
+            Assert.True(clubs.Contains(c));
         }
 
         [Fact]

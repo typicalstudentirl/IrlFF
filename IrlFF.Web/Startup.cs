@@ -43,8 +43,8 @@ namespace IrlFF.Web
             {
                 app.UseDeveloperExceptionPage();
 
-                // seeder recreates and seeds database on each execution                
-                new DataSeeder(new PlayerService()).Seed();
+                // seeder recreates and seeds database on each execution
+                new PlayerDataSeeder(new PlayerService(), new ClubService(), new TeamService()).Seed();
 
             }
             else
