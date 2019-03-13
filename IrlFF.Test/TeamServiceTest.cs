@@ -45,5 +45,17 @@ namespace IrlFF.Test
 
             Assert.Equal(teams, teamTest);
         }
+
+        [Fact]
+        public void Update_Existing_Club_Check_Result()
+        {
+            Team t = new Team { Owner = "Stephen McGowan", TeamName = "Galacticos" };
+            t = svc.AddTeam(t);
+            t.TotalPoints = 20;
+            svc.UpdateTeam(t);
+            t = svc.GetTeamById(t.Id);
+
+            Assert.Equal(20, t.TotalPoints);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using IrlFF.Data.Models;
 using IrlFF.Data.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -30,6 +31,7 @@ namespace IrlFF.Data.Services
         public Team GetTeamById(int id)
         {
             return ctx.Team
+                    .AsNoTracking()
                     .FirstOrDefault(p => p.Id == id);
         }
 
@@ -38,10 +40,22 @@ namespace IrlFF.Data.Services
             switch (orderBy)
             {
                 case "TotalPoints":
-                    return ctx.Team.OrderBy(c => c.TotalPoints).ToList();
+                    return ctx.Team.OrderByDescending(c => c.TotalPoints).ToList();
                 default:
                     return ctx.Team.ToList();
             }
+        }
+
+        public bool UpdateTeam(Team t)
+        {
+            Team team = GetTeamById(t.Id);
+            if (team == null)
+            {
+                return false;
+            }
+            ctx.Attach(t).State = EntityState.Modified;
+            ctx.SaveChanges();
+            return true;
         }
     }
 }

@@ -1,0 +1,25 @@
+<h1>Fixtures</h1>
+
+<p *ngIf="!fixtures"><em>Loading...</em></p>
+<table class='table table-striped' *ngIf="fixtures">
+  <thead>
+    <tr>
+      <th>Week</th>
+      <th>Home</th>
+      <th>Away</th>
+      <th>Date</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let fixture of fixtures">
+      <tr *ngFor="let match of fixture.matches">
+        <td>{{fixture.id}}</td>
+        <td>{{ match.homeClub }}</td>
+        <td>{{ match.awayClub }}</td>
+        <td>{{ match.date | date: 'short'}}</td>
+        <td>{{ match.location }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

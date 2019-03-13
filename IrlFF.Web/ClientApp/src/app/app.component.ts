@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  //initializing page to 1 for pagination
+  p: number = 1;
 }

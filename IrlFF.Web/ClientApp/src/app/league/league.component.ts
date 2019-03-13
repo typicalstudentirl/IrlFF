@@ -1,0 +1,34 @@
+import { Component, Inject, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+@Component({
+  selector: 'app-league',
+  templateUrl: './league.component.html'
+})
+export class LeagueComponent {
+  public teams: Team[];
+
+  constructor(private http: HttpClient, @Inject('BASE_URL') public baseUrl: string) { }
+
+  ngOnInit() {
+    let token = localStorage.getItem("jwt");
+    this.http.get<Team[]>(this.baseUrl + 'api/Team/?orderBy=TotalPoints', {
+      headers: new HttpHeaders({
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/json"
+      })
+    }).subscribe(result => {
+        this.teams = result;
+      }, error =>
+          console.error(error));
+  }
+}
+
+interface Team {
+  id: number;
+  owner: string;
+  teamName: string;
+  weekPoints: number;
+  totalPoints: number;
+  userId: number;
+}

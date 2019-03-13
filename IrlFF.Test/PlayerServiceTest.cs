@@ -7,6 +7,8 @@ namespace IrlFF.Test
 {
     public class PlayerServiceTest
     {
+        //private readonly IPlayerService svc;
+
         private readonly IPlayerService svc;
 
         public PlayerServiceTest()
@@ -79,7 +81,7 @@ namespace IrlFF.Test
 
             IList<Player> actualPlayers = svc.GetPlayers("TotalPoints");
 
-            Assert.Equal(24, actualPlayers[3].TotalPoints);
+            Assert.Equal(24, actualPlayers[2].TotalPoints);
         }
 
         [Fact]

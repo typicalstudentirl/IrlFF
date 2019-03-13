@@ -3,7 +3,7 @@ using IrlFF.Data.Services;
 
 namespace IrlFF.Data
 {
-    public class PlayerDataSeeder
+    public class DataSeeder
     {
         private readonly PlayerService playerSvc;
 
@@ -11,13 +11,17 @@ namespace IrlFF.Data
 
         private readonly TeamService teamSvc;
 
-        private readonly TeamPlayerService tpSvc;
+        private readonly TeamPlayerService teamPlayerSvc;
 
-        public PlayerDataSeeder(PlayerService playerSvc, ClubService clubSvc, TeamService teamSvc)
+        private readonly UserService userSvc;
+
+        public DataSeeder(PlayerService playerSvc, ClubService clubSvc, TeamService teamSvc, TeamPlayerService teamPlayerSvc, UserService userSvc)
         {
             this.playerSvc = playerSvc;
             this.clubSvc = clubSvc;
             this.teamSvc = teamSvc;
+            this.userSvc = userSvc;
+            this.teamPlayerSvc = teamPlayerSvc;
             playerSvc.Initialize();
             clubSvc.Initialize();
             teamSvc.Initialize();
@@ -25,8 +29,38 @@ namespace IrlFF.Data
 
         public void Seed()
         {
+            #region Seed Users
+            userSvc.RegisterUser(new User
+            {
+                UserName = "admin",
+                Password = "pass",
+                Role = Role.Administrator
+            });
+
+            userSvc.RegisterUser(new User
+            {
+                UserName = "guest",
+                Password = "Password1!",
+                Role = Role.User
+            });
+
+            userSvc.RegisterUser(new User
+            {
+                UserName = "John Doe",
+                Password = "pass",
+                Role = Role.User
+            });
+
+            userSvc.RegisterUser(new User
+            {
+                UserName = "Jane Doe",
+                Password = "pass",
+                Role = Role.User
+            });
+            #endregion
+
             #region Seed Clubs
-                Club Bohemians = clubSvc.AddClub(new Club
+            Club Bohemians = clubSvc.AddClub(new Club
                 {
                     ClubName = "Bohemians FC"
                 });
@@ -77,6 +111,7 @@ namespace IrlFF.Data
                 });
             #endregion
 
+            #region Seed Players
             Player p = playerSvc.AddPlayer(new Player
             {
                 Forename = "Barry",
@@ -89,6 +124,37 @@ namespace IrlFF.Data
                 Club = null,
                 TeamPlayers = null
             });
+            #endregion
+
+            #region Seed Teams
+            Team t = teamSvc.AddTeam(new Team
+            {
+                Owner = "Stephen McGowan",
+                TeamName = "Stephen's LOI Team",
+                TotalPoints = 10,
+                UserId = 2
+            });
+
+            Team t2 = teamSvc.AddTeam(new Team
+            {
+                Owner = "John Doe",
+                TeamName = "Johns's LOI Team",
+                TotalPoints = 40,
+                UserId = 3
+            });
+
+            Team t3 = teamSvc.AddTeam(new Team
+            {
+                Owner = "Jane Doe",
+                TeamName = "Jane's LOI Team",
+                TotalPoints = 25,
+                UserId = 4
+            });
+            #endregion
+
+            #region Seed TeamPlayers
+            TeamPlayer tp = teamPlayerSvc.AddTeamPlayer(1, 1);
+            #endregion
         }
     }
 }

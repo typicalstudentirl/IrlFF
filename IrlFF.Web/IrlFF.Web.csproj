@@ -17,12 +17,21 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\fixtures\**" />
+    <Compile Remove="ClientApp\src\app\teamLeague\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\fixtures\**" />
+    <Content Remove="ClientApp\src\app\teamLeague\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\fixtures\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\teamLeague\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\app\fixtures\**" />
+    <None Remove="ClientApp\src\app\teamLeague\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 

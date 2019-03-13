@@ -15,5 +15,7 @@ namespace IrlFF.Data.Services
 
         IList<Team> GetTeams(string orderBy = null);
 
+        bool UpdateTeam(Team t);
+
     }
 }

@@ -33,6 +33,7 @@ namespace IrlFF.Data.Services
         public Player GetPlayerById(int id)
         {
             return ctx.Player
+                .AsNoTracking()
                 .FirstOrDefault(p => p.Id == id);
         }
 
@@ -41,11 +42,11 @@ namespace IrlFF.Data.Services
             switch (orderBy)
             {
                 case "WeekPoints":
-                    return ctx.Player.OrderBy(p => p.WeekPoints).ToList();
+                    return ctx.Player.OrderByDescending(p => p.WeekPoints).ToList();
                 case "TotalPoints":
-                    return ctx.Player.OrderBy(p => p.TotalPoints).ToList();
+                    return ctx.Player.OrderByDescending(p => p.TotalPoints).ToList();
                 case "PlayerValue":
-                    return ctx.Player.OrderBy(m => m.PlayerValue).ToList();
+                    return ctx.Player.OrderByDescending(m => m.PlayerValue).ToList();
                 case "Goalkeeper":
                     return ctx.Player.Where(p => p.Position == Position.Goalkeeper).ToList();
                 case "Defender":
@@ -71,25 +72,10 @@ namespace IrlFF.Data.Services
             {
                 return false;
             }
-
-            ctx.Attach(p);
-            ctx.Entry(p).State = EntityState.Modified;
+            ctx.Attach(p).State = EntityState.Modified; 
             ctx.SaveChanges();
             return true;
         }
-
-
-        //public void Update<T>(T item) where T : Entity
-        //{
-        //    // assume Entity base class have an Id property for all items
-        //    var entity = _collection.Find(item.Id);
-        //    if (entity == null)
-        //    {
-        //        return;
-        //    }
-
-        //    _context.Entry(entity).CurrentValues.SetValues(item);
-        //}
 
         public bool DeletePlayer(int id)
         {
