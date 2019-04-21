@@ -19,7 +19,7 @@ namespace IrlFF.Test
         [Fact]
         public void Add_New_Team_Should_Be_Found()
         {
-            Team t = new Team { Owner = "Stephen", TeamName = "Fantasy Eleven" };
+            Team t = new Team { Forename = "Stephen", Surname = "McGowan", TeamName = "Fantasy Eleven" };
 
             t = svc.AddTeam(t);
 
@@ -33,9 +33,9 @@ namespace IrlFF.Test
         {
             IList<Team> teamTest = svc.GetTeams();
 
-            Team t = new Team { Owner = "Stephen McGowan", TeamName = "Galacticos" };
+            Team t = new Team { Forename = "Stephen", Surname = "McGowan", TeamName = "Galacticos" };
             teamTest.Add(t);
-            Team t2 = new Team { Owner = "Lee Deehan", TeamName = "Best XI" };
+            Team t2 = new Team { Forename = "Lee", Surname = "Deehan", TeamName = "Best XI" };
             teamTest.Add(t2);
 
             t = svc.AddTeam(t);
@@ -49,7 +49,7 @@ namespace IrlFF.Test
         [Fact]
         public void Update_Existing_Club_Check_Result()
         {
-            Team t = new Team { Owner = "Stephen McGowan", TeamName = "Galacticos" };
+            Team t = new Team { Forename = "Stephen", Surname = "McGowan", TeamName = "Galacticos" };
             t = svc.AddTeam(t);
             t.TotalPoints = 20;
             svc.UpdateTeam(t);

@@ -23,8 +23,20 @@ namespace IrlFF.Data.Services
 
         public Team AddTeam(Team t)
         {
+            t.Id = t.UserId;
             ctx.Team.Add(t);
-            ctx.SaveChanges();
+            ctx.Database.OpenConnection();
+            // Disable identity column temporarily to allow teamid = userid, then re-enable.
+            try
+            {
+                ctx.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Team ON");
+                ctx.SaveChanges();
+                ctx.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Team OFF");
+            }
+            finally
+            {
+                ctx.Database.CloseConnection();
+            }
             return t;
         }
 

@@ -47,5 +47,17 @@ namespace IrlFF.Data.Services
             }
             return players;
         }
+
+        public bool DeleteTeamPlayer(TeamPlayer teamPlayer)
+        {
+            if (teamPlayer == null)
+            {
+                return false;
+            }
+
+            ctx.TeamPlayer.Remove(teamPlayer);
+            ctx.SaveChanges();
+            return true;
+        }
     }
 }

@@ -3,9 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterService } from './register.service'
 import { Router } from "@angular/router";
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { catchError } from 'rxjs/operators/catchError';
 import 'rxjs/operators';
 
 @Component({
@@ -58,7 +55,7 @@ export class RegisterComponent implements OnInit {
     }
 
     if (!this.unique) {
-      console.log("Name isn't unique");
+      alert('The username ' + this.registerForm.value.userName + ' is taken, please choose another');
       return;
     }
     else {
@@ -68,7 +65,6 @@ export class RegisterComponent implements OnInit {
       // http POST
       this.svc.register_User(credentials);
       //end post
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value));
     }
   }
 }

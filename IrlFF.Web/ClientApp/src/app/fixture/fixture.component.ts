@@ -10,7 +10,6 @@ export class FixtureComponent {
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     http.get<Fixture>(baseUrl + 'api/Fixture/').subscribe(result => {
-      console.log(result);
       this.fixtures = result;
     }, error => console.error(error));
   }

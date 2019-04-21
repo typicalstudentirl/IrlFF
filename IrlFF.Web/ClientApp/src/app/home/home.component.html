@@ -3,82 +3,72 @@
 <p *ngIf="!players"><em>Loading...</em></p>
 
 <div class="row" id="outsideRow">
-  <div class="col-xs-9">
-    <div class="container-fluid" id="teamBackground">
-      <!--Goal keeper row-->
-      <div class="row">
-        <div class="col-xs-12" *ngIf="players">
-          <div class="player-name"> {{ players[0].forename }} {{ players[0].surname }} </div>
-          <div class="club-name"> {{ players[0].club.clubName }} </div>
-        </div>
-      </div>
-      <!--Defenders-->
-      <div class="row">
-        <div class="col-xs-3" *ngIf="players">
-          <div class="player-name"> {{ players[1].forename }} {{ players[1].surname }} </div>
-          <div class="club-name"> {{ players[2].club.clubName }} </div>
-        </div>
-        <div class="col-xs-3" *ngIf="players">
-          <div class="player-name"> {{ players[2].forename }} {{ players[2].surname }} </div>
-          <div class="club-name"> {{ players[2].club.clubName }} </div>
-        </div>
-        <div class="col-xs-3" *ngIf="players">
-          <div class="player-name"> {{ players[2].forename }} {{ players[2].surname }} </div>
-          <div class="club-name"> {{ players[2].club.clubName }} </div>
-        </div>
-        <div class="col-xs-3" *ngIf="players">
-          <div class="player-name"> {{ players[3].forename }} {{ players[3].surname }} </div>
-          <div class="club-name"> {{ players[3].club.clubName }} </div>
-        </div>
-      </div>
-
-      <!--Midfielders-->
-      <div class="row">
-        <div class="col-xs-3" id="mfCol" *ngIf="players">
-          <div class="player-name">  {{ players[4].forename }} {{ players[4].surname }} </div>
-          <div class="club-name"> {{ players[4].club.clubName }} </div>
-        </div>
-        <div class="col-xs-3" id="mfCol" *ngIf="players">
-          <div class="player-name">  {{ players[5].forename }} {{ players[5].surname }} </div>
-          <div class="club-name"> {{ players[5].club.clubName }} </div>
-        </div>
-        <div class="col-xs-3" id="mfCol" *ngIf="players">
-          <div class="player-name">  {{ players[6].forename }} {{ players[6].surname }} </div>
-          <div class="club-name"> {{ players[6].club.clubName }} </div>
-        </div>
-        <div class="col-xs-3" id="mfCol" *ngIf="players">
-          <div class="player-name">  {{ players[7].forename }} {{ players[7].surname }} </div>
-          <div class="club-name"> {{ players[7].club.clubName }} </div>
-        </div>
-      </div>
-
-      <!--Strikers-->
-      <div class="row">
-        <div class="col-xs-6" *ngIf="players">
-          <div class="player-name">  {{ players[9].forename }} {{ players[9].surname }} </div>
-          <div class="club-name"> {{ players[9].club.clubName }} </div>
-        </div>
-        <div class="col-xs-6" *ngIf="players">
-          <div class="player-name"> {{ players[10].forename }} {{ players[10].surname }} </div>
-          <div class="club-name"> {{ players[10].club.clubName }} </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <div class="col-xs-3" id="transferTable">
-    <table class='table table-hover table-striped ' *ngIf="teams">
-      <thead class='thead-dark'>
-        <tr>
-          <th>Players</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let team of teams | filter:filter | paginate: { itemsPerPage: 2, currentPage: p }; let i=index">
-          <td>Player name 1</td>
-          <td>Player name 2</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <ol class="list-group list-group-flush" *ngIf="players">
+    <li class="list-group-item">
+      <span class="badge badge-success badge-pill">GK</span>
+      {{ players[0].forename }} {{ players[0].surname }}
+      <button type="button" class="btn btn-success pull-right" >Add</button>
+      <button type="button" class="btn btn-danger pull-right" >Remove</button>
+    </li>
+    <li class="list-group-item">
+      <span class="badge badge-primary badge-pill">DEF</span>
+      {{ players[1].forename }} {{ players[1].surname }}
+      <button type="button" class="btn btn-success pull-right">Add</button>
+      <button type="button" class="btn btn-danger pull-right">Remove</button>
+    </li>
+    <li class="list-group-item">
+      <span class="badge badge-primary badge-pill">DEF</span>
+      {{ players[2].forename }} {{ players[2].surname }}
+      <button type="button" class="btn btn-success pull-right">Add</button>
+      <button type="button" class="btn btn-danger pull-right">Remove</button>
+    </li>
+    <li class="list-group-item">
+      <span class="badge badge-primary badge-pill">DEF</span>
+      {{ players[3].forename }} {{ players[3].surname }}
+      <button type="button" class="btn btn-success pull-right">Add</button>
+      <button type="button" class="btn btn-danger pull-right">Remove</button>
+    </li>
+    <li class="list-group-item">
+      <span class="badge badge-primary badge-pill">DEF</span>
+      {{ players[4].forename }} {{ players[4].surname }}
+      <button type="button" class="btn btn-success pull-right">Add</button>
+      <button type="button" class="btn btn-danger pull-right">Remove</button>
+    </li>
+    <li class="list-group-item">
+      <span class="badge badge-warning badge-pill">MF</span>
+      {{ players[5].forename }} {{ players[5].surname }}
+      <button type="button" class="btn btn-success pull-right">Add</button>
+      <button type="button" class="btn btn-danger pull-right">Remove</button>
+    </li>
+    <li class="list-group-item">
+      <span class="badge badge-warning badge-pill">MF</span>
+      {{ players[6].forename }} {{ players[6].surname }}
+      <button type="button" class="btn btn-success pull-right">Add</button>
+      <button type="button" class="btn btn-danger pull-right">Remove</button>
+    </li>
+    <li class="list-group-item">
+      <span class="badge badge-warning badge-pill">MF</span>
+      {{ players[7].forename }} {{ players[7].surname }}
+      <button type="button" class="btn btn-success pull-right">Add</button>
+      <button type="button" class="btn btn-danger pull-right">Remove</button>
+    </li>
+    <li class="list-group-item">
+      <span class="badge badge-warning badge-pill">MF</span>
+      {{ players[8].forename }} {{ players[8].surname }}
+      <button type="button" class="btn btn-success pull-right">Add</button>
+      <button type="button" class="btn btn-danger pull-right">Remove</button>
+    </li>
+    <li class="list-group-item">
+      <span class="badge badge-danger badge-pill">STR</span>
+      {{ players[9].forename }} {{ players[9].surname }}
+      <button type="button" class="btn btn-success pull-right">Add</button>
+      <button type="button" class="btn btn-danger pull-right">Remove</button>
+    </li>
+    <li class="list-group-item">
+      <span class="badge badge-danger badge-pill">STR</span>
+      {{ players[10].forename }} {{ players[10].surname }}
+      <button type="button" class="btn btn-success pull-right">Add</button>
+      <button type="button" class="btn btn-danger pull-right">Remove</button>
+    </li>
+  </ol>
 </div>

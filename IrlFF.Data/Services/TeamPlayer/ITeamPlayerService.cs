@@ -12,5 +12,7 @@ namespace IrlFF.Data.Services
         TeamPlayer AddTeamPlayer(int TeamId, int PlayerId);
 
         IList<Player> GetPlayersByTeamId(int id);
+
+        bool DeleteTeamPlayer(TeamPlayer teamPlayer);
     }
 }

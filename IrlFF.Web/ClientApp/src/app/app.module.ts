@@ -12,7 +12,10 @@ import { FixtureComponent } from './fixture/fixture.component';
 import { LeagueComponent } from './league/league.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-
+import { GoalkeeperTransferComponent } from './transfer/goalkeeper/goalkeeper-transfer.component';
+import { DefenderTransferComponent } from './transfer/defender/defender-transfer.component';
+import { MidfielderTransferComponent } from './transfer/midfielder/midfielder-transfer.component';
+import { ForwardTransferComponent } from './transfer/forward/forward-transfer.component';
 // App services
 import { AuthGuard } from './guards/auth-guard.service';
 import { HomeService } from './home/home.service'
@@ -30,6 +33,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     LeagueComponent,
     LoginComponent,
     RegisterComponent,
+    GoalkeeperTransferComponent,
+    DefenderTransferComponent,
+    MidfielderTransferComponent,
+    ForwardTransferComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -45,6 +52,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
       { path: 'league', component: LeagueComponent},
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
+      { path: 'goalkeeper', component: GoalkeeperTransferComponent },
+      { path: 'defender', component: DefenderTransferComponent },
+      { path: 'midfielder', component: MidfielderTransferComponent },
+      { path: 'forward', component: ForwardTransferComponent },
     ])
   ],
   providers: [AuthGuard, JwtHelper, HomeService, RegisterService],
