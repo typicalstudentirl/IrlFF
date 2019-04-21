@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IrlFF.Web.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TeamController : ControllerBase
@@ -48,6 +47,7 @@ namespace IrlFF.Web.Controllers
 
         // PUT: api/Team/5
         [HttpPut("{id}")]
+        [Authorize]
         public void Put(int id, [FromBody] Team team)
         {
                 _service.UpdateTeam(team);

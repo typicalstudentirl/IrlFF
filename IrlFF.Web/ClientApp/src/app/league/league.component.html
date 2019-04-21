@@ -2,11 +2,6 @@
 
 <p *ngIf="!teams"><em>Loading...</em></p>
 
-<!--<form>
-  <input type="text" name="search" [(ngModel)]="filter" placeholder="Search for friends..">
-</form>-->
-
-
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
@@ -26,12 +21,13 @@
   </thead>
   <tbody>
     <tr *ngFor="let team of teams | filter:filter | paginate: { itemsPerPage: 2, currentPage: p }; let i=index">
-      <td scope="row"><b>{{ i+1 }}</b></td>
-      <td>{{ team.teamName}}</td>
+      <td><b>{{ team.rank }}</b></td>
+      <td>{{ team.teamName }}</td>
       <td>{{ team.weekPoints }} </td>
       <td>{{ team.totalPoints }}</td>
-      <td>{{ team.owner }}</td>
+      <td>{{ team.foreName }} {{team.surName }} </td>
     </tr>
   </tbody>
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+

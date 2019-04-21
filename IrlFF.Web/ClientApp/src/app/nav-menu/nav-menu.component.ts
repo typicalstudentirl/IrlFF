@@ -26,11 +26,14 @@ export class NavMenuComponent {
 
   isUserAuthenticated() {
     let token: string = localStorage.getItem("jwt");
-    if (token && !this.jwtHelper.isTokenExpired(token)) {
-      return true;
-    }
-    else {
-      return false;
-    }
+    if (token != null) {
+      if (token && !this.jwtHelper.isTokenExpired(token)) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    } else return false;
+
   }
 }

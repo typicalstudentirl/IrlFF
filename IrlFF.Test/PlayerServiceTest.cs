@@ -21,7 +21,7 @@ namespace IrlFF.Test
         [Fact]
         public void Add_New_Player_To_Empty_DB_Should_Be_Found()
         {
-            Player p = new Player { Forename = "Gregory", Surname = "Sloggett", WeekPoints = 12, TotalPoints = 24, ClubId = 1, PlayerValue = 5.0, Position = Position.Midfielder };
+            Player p = new Player { Forename = "Gregory", Surname = "Sloggett", WeekPoints = 12, TotalPoints = 24, ClubId = 1, Position = Position.Midfielder };
 
             p = svc.AddPlayer(p);
 
@@ -37,10 +37,10 @@ namespace IrlFF.Test
             IList<Player> expectedPlayers = new List<Player>();
             expectedPlayers = svc.GetPlayers();
 
-            Player p = new Player { Forename = "Barry", Surname = "McNamee", WeekPoints = 0, TotalPoints = 0, ClubId = 2, PlayerValue = 5.0, Position = Position.Midfielder };
+            Player p = new Player { Forename = "Barry", Surname = "McNamee", WeekPoints = 0, TotalPoints = 0, ClubId = 2, Position = Position.Midfielder };
             expectedPlayers.Add(p);
 
-            Player p2 = new Player { Forename = "Gregory", Surname = "Sloggett", WeekPoints = 12, TotalPoints = 24, ClubId = 1, PlayerValue = 5.0, Position = Position.Midfielder };
+            Player p2 = new Player { Forename = "Gregory", Surname = "Sloggett", WeekPoints = 12, TotalPoints = 24, ClubId = 1, Position = Position.Midfielder };
             expectedPlayers.Add(p2);
 
             p = svc.AddPlayer(p);
@@ -56,9 +56,9 @@ namespace IrlFF.Test
         {
 
 
-            Player p = new Player { Forename = "Barry", Surname = "McNamee", WeekPoints = 0, TotalPoints = 0, ClubId = 2, PlayerValue = 5.0, Position = Position.Midfielder };
+            Player p = new Player { Forename = "Barry", Surname = "McNamee", WeekPoints = 0, TotalPoints = 0, ClubId = 2, Position = Position.Midfielder };
 
-            Player p2 = new Player { Forename = "Gregory", Surname = "Sloggett", WeekPoints = 12, TotalPoints = 24, ClubId = 1, PlayerValue = 5.0, Position = Position.Midfielder };
+            Player p2 = new Player { Forename = "Gregory", Surname = "Sloggett", WeekPoints = 12, TotalPoints = 24, ClubId = 1, Position = Position.Midfielder };
 
             p = svc.AddPlayer(p);
             p2 = svc.AddPlayer(p2);
@@ -72,9 +72,9 @@ namespace IrlFF.Test
         public void Add_Players_And_Get_Players_Order_By_TotalPoints()
         {
 
-            Player p = new Player { Forename = "Barry", Surname = "McNamee", WeekPoints = 0, TotalPoints = 0, ClubId = 2, PlayerValue = 5.0, Position = Position.Midfielder };
+            Player p = new Player { Forename = "Barry", Surname = "McNamee", WeekPoints = 0, TotalPoints = 0, ClubId = 2, Position = Position.Midfielder };
 
-            Player p2 = new Player { Forename = "Gregory", Surname = "Sloggett", WeekPoints = 12, TotalPoints = 24, ClubId = 1, PlayerValue = 5.0, Position = Position.Midfielder };
+            Player p2 = new Player { Forename = "Gregory", Surname = "Sloggett", WeekPoints = 12, TotalPoints = 24, ClubId = 1, Position = Position.Midfielder };
 
             p = svc.AddPlayer(p);
             p2 = svc.AddPlayer(p2);
@@ -85,28 +85,12 @@ namespace IrlFF.Test
         }
 
         [Fact]
-        public void Add_Players_And_Get_Players_Order_By_PlayerValue()
-        {
-
-            Player p = new Player { Forename = "Barry", Surname = "McNamee", WeekPoints = 0, TotalPoints = 0, ClubId = 2, PlayerValue = 5.0, Position = Position.Midfielder };
-
-            Player p2 = new Player { Forename = "Gregory", Surname = "Sloggett", WeekPoints = 12, TotalPoints = 24, ClubId = 1, PlayerValue = 10.0, Position = Position.Midfielder };
-
-            p = svc.AddPlayer(p);
-            p2 = svc.AddPlayer(p2);
-
-            IList<Player> actualPlayers = svc.GetPlayers("PlayerValue");
-
-            Assert.Equal(10.0, actualPlayers[2].PlayerValue);
-        }
-
-        [Fact]
         public void Add_Players_And_Get_Players_Order_By_Position_Defender()
         {
 
-            Player p = new Player { Forename = "Barry", Surname = "McNamee", WeekPoints = 0, TotalPoints = 0, ClubId = 2, PlayerValue = 5.0, Position = Position.Midfielder };
+            Player p = new Player { Forename = "Barry", Surname = "McNamee", WeekPoints = 0, TotalPoints = 0, ClubId = 2, Position = Position.Midfielder };
 
-            Player p2 = new Player { Forename = "Darren", Surname = "Cole", WeekPoints = 12, TotalPoints = 24, ClubId = 1, PlayerValue = 10.0, Position = Position.Defender };
+            Player p2 = new Player { Forename = "Darren", Surname = "Cole", WeekPoints = 12, TotalPoints = 24, ClubId = 1, Position = Position.Defender };
 
             p = svc.AddPlayer(p);
             p2 = svc.AddPlayer(p2);
@@ -120,15 +104,15 @@ namespace IrlFF.Test
         public void Add_Players_And_Get_Players_By_Club()
         {
 
-            Player p = new Player { Forename = "Barry", Surname = "McNamee", WeekPoints = 0, TotalPoints = 0, ClubId = 1, PlayerValue = 5.0, Position = Position.Midfielder };
+            Player p = new Player { Forename = "Barry", Surname = "McNamee", WeekPoints = 0, TotalPoints = 0, ClubId = 1, Position = Position.Midfielder };
 
-            Player p2 = new Player { Forename = "Darren", Surname = "Cole", WeekPoints = 12, TotalPoints = 24, ClubId = 1, PlayerValue = 10.0, Position = Position.Defender };
+            Player p2 = new Player { Forename = "Darren", Surname = "Cole", WeekPoints = 12, TotalPoints = 24, ClubId = 1, Position = Position.Defender };
 
-            Player p3 = new Player { Forename = "Nathan", Surname = "Gartside", WeekPoints = 1, TotalPoints = 1, ClubId = 1, PlayerValue = 4.0, Position = Position.Goalkeeper};
+            Player p3 = new Player { Forename = "Nathan", Surname = "Gartside", WeekPoints = 1, TotalPoints = 1, ClubId = 1, Position = Position.Goalkeeper};
 
-            Player p4 = new Player { Forename = "Junior", Surname = "Ogedi-Uzokwe", WeekPoints = 12, TotalPoints = 13, ClubId = 1, PlayerValue = 11.0, Position = Position.Attacker };
+            Player p4 = new Player { Forename = "Junior", Surname = "Ogedi-Uzokwe", WeekPoints = 12, TotalPoints = 13, ClubId = 1, Position = Position.Forward };
 
-            Player p5 = new Player { Forename = "Aaron", Surname = "McEneff", WeekPoints = 12, TotalPoints = 24, ClubId = 2, PlayerValue = 10.0, Position = Position.Midfielder};
+            Player p5 = new Player { Forename = "Aaron", Surname = "McEneff", WeekPoints = 12, TotalPoints = 24, ClubId = 2, Position = Position.Midfielder};
             p = svc.AddPlayer(p);
             p2 = svc.AddPlayer(p2);
             p3 = svc.AddPlayer(p3);
@@ -143,7 +127,7 @@ namespace IrlFF.Test
         [Fact]
         public void Update_Player_Get_Player_Compare_Week_Points()
         {
-            Player p = new Player { Forename = "Barry", Surname = "McNamee", WeekPoints = 0, TotalPoints = 0, ClubId = 2, PlayerValue = 5.0, Position = Position.Midfielder };
+            Player p = new Player { Forename = "Barry", Surname = "McNamee", WeekPoints = 0, TotalPoints = 0, ClubId = 2, Position = Position.Midfielder };
 
             p = svc.AddPlayer(p);
 
@@ -161,7 +145,7 @@ namespace IrlFF.Test
         [Fact]
         public void Add_Player_Delete_Player_Check_If_Exists()
         {
-            Player p = new Player { Forename = "Barry", Surname = "McNamee", WeekPoints = 0, TotalPoints = 0, ClubId = 2, PlayerValue = 5.0, Position = Position.Midfielder };
+            Player p = new Player { Forename = "Barry", Surname = "McNamee", WeekPoints = 0, TotalPoints = 0, ClubId = 2, Position = Position.Midfielder };
 
             p = svc.AddPlayer(p);
 

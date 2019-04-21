@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using IrlFF.Data.Models;
 using IrlFF.Data.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IrlFF.Web.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TeamPlayer : ControllerBase
@@ -26,7 +22,7 @@ namespace IrlFF.Web.Controllers
         [HttpGet("{id}", Name = "GetPlayersByTeamId")]
         public ActionResult<IList<TeamPlayer>> Get(int id)
         {
-            var teamPlayer = _service.GetPlayersByTeamId(id).ToList();
+            var teamPlayer = _service.GetPlayersByTeamId(id);
             if (teamPlayer == null)
             {
                 return NotFound();

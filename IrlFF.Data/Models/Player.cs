@@ -7,7 +7,7 @@ namespace IrlFF.Data.Models
         Goalkeeper = 1,
         Defender = 2 ,
         Midfielder = 3,
-        Attacker = 4
+        Forward = 4
     }
 
     public class Player //Dependent entity
@@ -23,11 +23,7 @@ namespace IrlFF.Data.Models
 
         public string Surname { get; set; }
 
-        public int WeekPoints { get; set; }
-
         public int TotalPoints { get; set; }
-
-        public double PlayerValue { get; set; }
 
         public Position Position { get; set; }
 

@@ -16,17 +16,17 @@ namespace IrlFF.Test
             svc.Initialize();
         }
 
-        [Fact]
-        public void Add_TeamPlayer_To_Empty_DB_And_Be_Found()
-        {
-            TeamPlayer tp = new TeamPlayer { };
+        //[Fact]
+        //public void Add_TeamPlayer_To_Empty_DB_And_Be_Found()
+        //{
+        //    TeamPlayer tp = new TeamPlayer { };
 
-            tp = svc.AddTeamPlayer(1, 1);
+        //    tp = svc.AddTeamPlayer(1, 1);
 
-            IList<TeamPlayer> teamPlayers = svc.GetPlayersByTeamId(1);
+        //    IList<TeamPlayer> teamPlayers = svc.GetPlayersByTeamId(1);
 
-            Assert.NotNull(teamPlayers);
-            Assert.Equal(tp, teamPlayers[0]);
-        }
+        //    Assert.NotNull(teamPlayers);
+        //    Assert.Equal(tp, teamPlayers[0]);
+        //}
     }
 }

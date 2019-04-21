@@ -8,10 +8,12 @@ namespace IrlFF.Data.Services
     public interface IUserService
     {
         // User management
-        User RegisterUser(User u);
+        int RegisterUser(User u);
 
         User GetUserById(int id);
 
         User Authenticate(string userName, string password);
+
+        User[] GetUsers();
     }
 }

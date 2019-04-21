@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -15,6 +15,8 @@ import { RegisterComponent } from './register/register.component';
 
 // App services
 import { AuthGuard } from './guards/auth-guard.service';
+import { HomeService } from './home/home.service'
+import { RegisterService } from './register/register.service'
 import { JwtHelper } from 'angular2-jwt';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -27,23 +29,25 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FixtureComponent,
     LeagueComponent,
     LoginComponent,
-    RegisterComponent ,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
+    ReactiveFormsModule,
+    BrowserModule,
+    FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuard]},
       { path: 'fixture', component: FixtureComponent },
-      { path: 'league', component: LeagueComponent, canActivate: [AuthGuard]},
+      { path: 'league', component: LeagueComponent},
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
     ])
   ],
-  providers: [AuthGuard, JwtHelper],
+  providers: [AuthGuard, JwtHelper, HomeService, RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

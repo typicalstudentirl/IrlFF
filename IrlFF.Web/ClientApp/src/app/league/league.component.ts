@@ -18,7 +18,12 @@ export class LeagueComponent {
         "Content-Type": "application/json"
       })
     }).subscribe(result => {
-        this.teams = result;
+      this.teams = result;
+      // set the rank to allow for pagination
+      for (let i = 0; i < result.length; i++) {
+        result[i].rank = i + 1;
+      }
+
       }, error =>
           console.error(error));
   }
@@ -26,9 +31,11 @@ export class LeagueComponent {
 
 interface Team {
   id: number;
-  owner: string;
+  foreName: string;
+  surName: string;
   teamName: string;
   weekPoints: number;
   totalPoints: number;
   userId: number;
+  rank: number;
 }

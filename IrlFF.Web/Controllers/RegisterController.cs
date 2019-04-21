@@ -24,11 +24,11 @@ namespace IrlFf.Web.Controllers
 
         //POST api/register
         [HttpPost (Name = "Register")]
-        public ActionResult<User> Post([FromBody] [Bind("firstName, lastName, userName, password")]  User user)
+        public ActionResult<int> Post([FromBody] [Bind("userName, password")]  User user)
         {
             user.Role = Role.User;
             var u = _svc.RegisterUser(user);
-            if (u == null)
+            if (u == 0)
             {
                 return BadRequest();
             }

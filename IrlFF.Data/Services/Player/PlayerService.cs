@@ -33,6 +33,7 @@ namespace IrlFF.Data.Services
         public Player GetPlayerById(int id)
         {
             return ctx.Player
+                .Include(p => p.Club)
                 .AsNoTracking()
                 .FirstOrDefault(p => p.Id == id);
         }
@@ -41,22 +42,23 @@ namespace IrlFF.Data.Services
         {
             switch (orderBy)
             {
-                case "WeekPoints":
-                    return ctx.Player.OrderByDescending(p => p.WeekPoints).ToList();
                 case "TotalPoints":
                     return ctx.Player.OrderByDescending(p => p.TotalPoints).ToList();
-                case "PlayerValue":
-                    return ctx.Player.OrderByDescending(m => m.PlayerValue).ToList();
                 case "Goalkeeper":
-                    return ctx.Player.Where(p => p.Position == Position.Goalkeeper).ToList();
+                    return ctx.Player
+                .Include(p => p.Club).Where(p => p.Position == Position.Goalkeeper).ToList();
                 case "Defender":
-                    return ctx.Player.Where(p => p.Position == Position.Defender).ToList();
+                    return ctx.Player
+                .Include(p => p.Club).Where(p => p.Position == Position.Defender).ToList();
                 case "Midfielder":
-                    return ctx.Player.Where(p => p.Position == Position.Midfielder).ToList();
-                case "Attacker":
-                    return ctx.Player.Where(p => p.Position == Position.Attacker).ToList();
+                    return ctx.Player
+                .Include(p => p.Club).Where(p => p.Position == Position.Midfielder).ToList();
+                case "Forward":
+                    return ctx.Player
+                .Include(p => p.Club).Where(p => p.Position == Position.Forward).ToList();
                 default:
-                    return ctx.Player.ToList();
+                    return ctx.Player
+                .Include(p => p.Club).ToList();
             }
         }
 

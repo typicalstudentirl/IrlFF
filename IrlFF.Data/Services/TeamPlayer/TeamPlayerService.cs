@@ -30,12 +30,22 @@ namespace IrlFF.Data.Services
             return tp;
         }
 
-        public IList<TeamPlayer> GetPlayersByTeamId(int teamId)
+        public IList<Player> GetPlayersByTeamId(int teamId)
         {
-            return ctx.TeamPlayer.Include(tp => tp.Player)
-                .Include(teamPlayer => teamPlayer.Team)
-                .Include(teamPlayer => teamPlayer.Player)
+            // Access DBContext, return all TeamPlayers where id = id
+            List<TeamPlayer> tps = 
+                ctx.TeamPlayer
+                .Include(tp => tp.Player)
+                .ThenInclude(player => player.Club)
                 .Where(teamPlayer => teamPlayer.TeamId.Equals(teamId)).ToList();
+            List<Player> players = new List<Player>();
+
+            // Loop team players and add all players to player list, return players online
+            foreach (TeamPlayer teamPlayer in tps)
+            {
+                players.Add(teamPlayer.Player);
+            }
+            return players;
         }
     }
 }

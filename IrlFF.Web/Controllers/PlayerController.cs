@@ -23,9 +23,9 @@ namespace IrlFF.Web.Controllers
 
         // GET: api/Player
         [HttpGet(Name = "GetPlayers")]
-        public ActionResult<IList<Player>> Get()
+        public ActionResult<IList<Player>> Get(string orderby=null)
         {
-            IList<Player> players = _service.GetPlayers();
+            IList<Player> players = _service.GetPlayers(orderby);
             return players.ToList<Player>();
         }
 

@@ -25,7 +25,7 @@ namespace IrlFf.Web.Controllers
             _svc = service;
         }
 
-        // GET api/user
+        // POST api/user
         [HttpPost (Name = "Login")]
         public ActionResult<User> Post([FromBody][Bind("username, password")] User u)
         {
@@ -35,6 +35,12 @@ namespace IrlFf.Web.Controllers
                 return BadRequest();
             }
             return JwtHelper.SignJwtToken(user, _appSettings.Secret);
+        }
+
+        [HttpGet (Name = "CheckUniqueUsername" )]
+        public ActionResult<User[]> Get(string username = null)
+        {
+            return _svc.GetUsers();
         }
     }
 }

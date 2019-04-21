@@ -19,7 +19,7 @@ namespace IrlFF.Web.Helpers
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Role, user.Role.ToString()),
-                    new Claim(ClaimTypes.Sid, user.Id.ToString())
+                    new Claim("UserId", user.Id.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(50),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using IrlFF.Data.Models;
 using IrlFF.Data.Repositories;
 
@@ -29,6 +30,31 @@ namespace IrlFF.Data.Services
             return ctx.User.FirstOrDefault(u => u.Id == id);
         }
 
+        //public bool GetUsers(string username=null)
+        //{
+        //    bool unique = true;
+        //    User[] users = ctx.User.ToArray<User>();
+        //    foreach (User user in users)
+        //    {
+        //        if (username == user.UserName)
+        //        {
+        //            unique = false;
+        //        }
+        //    }
+        //    return unique;
+        //}
+
+
+        public User[] GetUsers()
+        {
+            User[] users = ctx.User.ToArray<User>();
+            foreach (User u in users)
+            {
+                u.Password = null;
+            }
+            return users;
+        }
+
         public User Authenticate(string userName, string password)
         {
             // retrieve the user based on the UserName (assumes Username is unique)
@@ -41,17 +67,25 @@ namespace IrlFF.Data.Services
             {
                 return null;
             }
-
             return user;
         }
 
-        public User RegisterUser(User u)
+        public int RegisterUser(User u)
         {
             // hash the user password
             u.Password = BCrypt.Net.BCrypt.HashPassword(u.Password);
-            ctx.User.Add(u);
-            ctx.SaveChanges();
-            return u;
+            try
+            {
+                ctx.User.Add(u);
+                ctx.SaveChanges();
+                return u.Id;
+            }
+
+            catch(Exception ex)
+            {
+                 throw ex;
+            }
+            
         }
     }
 }

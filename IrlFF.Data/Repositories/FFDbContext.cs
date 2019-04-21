@@ -1,10 +1,6 @@
 ﻿using IrlFF.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
 using System;
-using System.Collections.Generic;
 
 namespace IrlFF.Data.Repositories
 {
@@ -21,8 +17,7 @@ namespace IrlFF.Data.Repositories
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                .UseSqlServer(@"Server = (localdb)\mssqllocaldb; Database = IrlFF; Trusted_Connection = True; ConnectRetryCount = 0;")
-                .UseLoggerFactory(GetLoggerFactory());
+                .UseSqlServer(@"Server = (localdb)\mssqllocaldb; Database = IrlFF; Trusted_Connection = True; ConnectRetryCount = 0;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -32,8 +27,12 @@ namespace IrlFF.Data.Repositories
 
             modelBuilder.Entity<Fixture>()
                 .HasData(new Fixture { Id = 1 } );
-                
 
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.UserName)
+                .IsUnique();
+
+            #region Matches
             modelBuilder.Entity<Match>()
                 .HasData(
                             new Match { Id = 1, HomeClub = "Waterford", AwayClub = "Shamrock Rovers", Date = new DateTime(2019, 2, 15, 20, 0, 0), Location = "Waterford Regional Sports Centre", FixtureId = 1 },
@@ -42,17 +41,61 @@ namespace IrlFF.Data.Repositories
                             new Match { Id = 4, HomeClub = "Derry City", AwayClub = "U.C.D", Date = new DateTime(2019, 2, 12, 20, 19, 45), Location = "The Brandywell Stadium", FixtureId = 1 },
                             new Match { Id = 5, HomeClub = "Bohemians", AwayClub = "Finn Harps", Date = new DateTime(2019, 2, 12, 20, 0, 0), Location = "Dalymount Park", FixtureId = 1 }
                 );
-        }
+            #endregion
 
-        private ILoggerFactory GetLoggerFactory()
-        {
-            IServiceCollection serviceCollection = new ServiceCollection();
-            serviceCollection.AddLogging(builder =>
-                builder.AddConsole()
-                    .AddFilter(DbLoggerCategory.Database.Command.Name,
-                        LogLevel.Information));
-            return serviceCollection.BuildServiceProvider()
-                .GetService<ILoggerFactory>();
+            #region Clubs
+            modelBuilder.Entity<Club>()
+                .HasData(new Club
+            {
+                Id = 1,
+                ClubName = "Bohemians FC"
+            },
+            new Club
+            {
+                Id = 2,
+                ClubName = "Cork City"
+            },
+            new Club
+            {
+                Id = 3,
+                ClubName = "Derry City"
+            },
+            new Club
+            {
+                Id = 4,
+                ClubName = "Dundalk FC"
+            },
+            new Club
+            {
+                Id = 5,
+                ClubName = "Finn Harps"
+            },
+            new Club
+            {
+                Id = 6,
+                ClubName = "Shamrock Rovers"
+            },
+            new Club
+            {
+                Id = 7,
+                ClubName = "Sligo Rovers"
+            },
+            new Club
+            {
+                Id = 8,
+                ClubName = "St. Pats"
+            },
+            new Club
+            {
+                Id = 9,
+                ClubName = "Waterford"
+            },
+            new Club
+            {
+                Id = 10,
+                ClubName = "U.C.D"
+            });
+            #endregion
         }
     }
 }
