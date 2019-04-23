@@ -26,7 +26,10 @@ namespace IrlFF.Data.Repositories
                 .HasKey(tp => new { tp.TeamId, tp.PlayerId });
 
             modelBuilder.Entity<Fixture>()
-                .HasData(new Fixture { Id = 1 } );
+                .HasData(
+                new Fixture { Id = 1 },
+                new Fixture { Id = 2 }
+                );
 
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.UserName)
@@ -35,11 +38,17 @@ namespace IrlFF.Data.Repositories
             #region Matches
             modelBuilder.Entity<Match>()
                 .HasData(
-                            new Match { Id = 1, HomeClub = "Waterford", AwayClub = "Shamrock Rovers", Date = new DateTime(2019, 2, 15, 20, 0, 0), Location = "Waterford Regional Sports Centre", FixtureId = 1 },
-                            new Match { Id = 2, HomeClub = "St. Pats", AwayClub = "Cork City", Date = new DateTime(2019, 2, 12, 19, 45, 0), Location = "Richmond Park", FixtureId = 1 },
-                            new Match { Id = 3, HomeClub = "Dundalk", AwayClub = "Sligo Rovers", Date = new DateTime(2019, 2, 12, 19, 45, 0), Location = "Oriel Park", FixtureId = 1 },
-                            new Match { Id = 4, HomeClub = "Derry City", AwayClub = "U.C.D", Date = new DateTime(2019, 2, 12, 20, 19, 45), Location = "The Brandywell Stadium", FixtureId = 1 },
-                            new Match { Id = 5, HomeClub = "Bohemians", AwayClub = "Finn Harps", Date = new DateTime(2019, 2, 12, 20, 0, 0), Location = "Dalymount Park", FixtureId = 1 }
+                            new Match { Id = 1, HomeClub = "Waterford", AwayClub = "Shamrock Rovers", Date = new DateTime(2019, 2, 15, 20, 0, 0), Location = "Waterford RSC", FixtureId = 1 },
+                            new Match { Id = 2, HomeClub = "St. Pats", AwayClub = "Cork City", Date = new DateTime(2019, 2, 12, 15, 45, 0), Location = "Richmond Park", FixtureId = 1 },
+                            new Match { Id = 3, HomeClub = "Dundalk", AwayClub = "Sligo Rovers", Date = new DateTime(2019, 2, 15, 19, 45, 0), Location = "Oriel Park", FixtureId = 1 },
+                            new Match { Id = 4, HomeClub = "Derry City", AwayClub = "U.C.D", Date = new DateTime(2019, 2, 15, 20, 19, 45), Location = "The Brandywell Stadium", FixtureId = 1 },
+                            new Match { Id = 5, HomeClub = "Bohemians", AwayClub = "Finn Harps", Date = new DateTime(2019, 2, 15, 20, 0, 0), Location = "Dalymount Park", FixtureId = 1 },
+
+                            new Match { Id = 6, HomeClub = "Cork City", AwayClub = "Waterford", Date = new DateTime(2019, 2, 22, 20, 0, 0), Location = "Turner's Cross", FixtureId = 2 },
+                            new Match { Id = 7, HomeClub = "Shamrock Rovers", AwayClub = "Derry City", Date = new DateTime(2019, 2, 22, 19, 45, 0), Location = "Tallaght Stadium", FixtureId = 2 },
+                            new Match { Id = 8, HomeClub = "Finn Harps", AwayClub = "Dundalk", Date = new DateTime(2019, 2, 22, 19, 45, 0), Location = "Finn Park", FixtureId = 2 },
+                            new Match { Id = 9, HomeClub = "U.C.D", AwayClub = "Bohemians", Date = new DateTime(2019, 2, 22, 20, 19, 45), Location = "U.C.D Bowl", FixtureId = 2 },
+                            new Match { Id = 10, HomeClub = "Sligo Rovers", AwayClub = "St. Pats", Date = new DateTime(2019, 2, 22, 20, 0, 0), Location = "The Showgrounds", FixtureId = 2 }
                 );
             #endregion
 

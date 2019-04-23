@@ -1,0 +1,31 @@
+<h1> Midfielders </h1>
+
+<p *ngIf="!midfielders"><em>Loading...</em></p>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+  </div>
+  <input type="text" class="form-control" placeholder="Search for players by name/club.." [(ngModel)]="filter">
+</div>
+
+<table class='table table-hover table-striped ' *ngIf="midfielders">
+  <thead class='thead-dark'>
+    <tr>
+      <th>Name</th>
+      <th>Club</th>
+      <th>Points</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let midfielder of midfielders | filter:filter | paginate: { itemsPerPage: 10, currentPage: p }; let i=index">
+      <td>{{ midfielder.forename }} {{ midfielder.surname }}</td>
+      <td>{{ midfielder.club.clubName }}</td>
+      <td>{{ midfielder.totalPoints }}</td>
+      <td>  <button type="button" class="btn btn-success pull-center" (click)="svc.addToTeam(midfielder.id)">Add</button> </td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+

@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <ng-container *ngFor="let fixture of fixtures">
+    <ng-container *ngFor="let fixture of fixtures | paginate: { itemsPerPage: 1, currentPage: p };">
       <tr *ngFor="let match of fixture.matches">
         <td>{{fixture.id}}</td>
         <td>{{ match.homeClub }}</td>
@@ -23,3 +23,4 @@
     </ng-container>
   </tbody>
 </table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

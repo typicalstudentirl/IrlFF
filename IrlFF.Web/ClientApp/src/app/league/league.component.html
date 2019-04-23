@@ -14,18 +14,16 @@
     <tr>
       <th>Rank</th>
       <th>Team Name</th>
-      <th>Week Points</th>
       <th>Points</th>
       <th>Owner</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let team of teams | filter:filter | paginate: { itemsPerPage: 2, currentPage: p }; let i=index">
+    <tr *ngFor="let team of teams | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i=index">
       <td><b>{{ team.rank }}</b></td>
       <td>{{ team.teamName }}</td>
-      <td>{{ team.weekPoints }} </td>
       <td>{{ team.totalPoints }}</td>
-      <td>{{ team.foreName }} {{team.surName }} </td>
+      <td>{{ team.forename }} {{team.surname }} </td>
     </tr>
   </tbody>
 </table>

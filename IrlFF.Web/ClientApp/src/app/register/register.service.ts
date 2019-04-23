@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Response } from "@angular/http";
 import 'rxjs/operators';
 import 'rxjs/add/operator/map'
 import { switchMap } from 'rxjs/operators';
@@ -27,8 +26,7 @@ export class RegisterService {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       })
-    })
-      .pipe(
+    }).pipe(
         switchMap(result => {
           /* do something with result */
          // Parse string output JSON Object

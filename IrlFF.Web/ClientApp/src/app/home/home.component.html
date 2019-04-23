@@ -1,74 +1,146 @@
 <h1>Team Selection</h1>
 
-<p *ngIf="!players"><em>Loading...</em></p>
+<p *ngIf="!resolved"><em>Loading...</em></p>
 
 <div class="row" id="outsideRow">
-  <ol class="list-group list-group-flush" *ngIf="players">
+  <ol class="list-group list-group-flush" *ngIf="resolved">
     <li class="list-group-item">
       <span class="badge badge-success badge-pill">GK</span>
-      {{ players[0].forename }} {{ players[0].surname }}
-      <button type="button" class="btn btn-success pull-right" >Add</button>
-      <button type="button" class="btn btn-danger pull-right" >Remove</button>
+      <span *ngIf="goalkeepers[0]">
+        {{ goalkeepers[0].forename }} {{ goalkeepers[0].surname }}
+      </span>
+      <span *ngIf="!goalkeepers[0]">
+        <button type="button" class="btn btn-success pull-right" (click)="svc.navToAdd('goalkeeper')">Add</button>
+      </span>
+      <span *ngIf="goalkeepers[0]">
+        <button type="button" class="btn btn-danger pull-right" (click)="svc.removePlayer(goalkeepers[0].id)">Remove</button>
+      </span>
+    </li>
+  </ol>
+  <ol class="list-group list-group-flush" *ngIf="resolved">
+    <li class="list-group-item">
+      <span class="badge badge-primary badge-pill">DEF</span>
+      <span *ngIf="defenders[0]">
+        {{ defenders[0].forename }} {{ defenders[0].surname }}
+      </span>
+      <span *ngIf="!defenders[0]">
+        <button type="button" class="btn btn-success pull-right" (click)="svc.navToAdd('defender')">Add</button>
+      </span>
+      <span *ngIf="defenders[0]">
+        <button type="button" class="btn btn-danger pull-right" (click)="svc.removePlayer(defenders[0].id)">Remove</button>
+      </span>
     </li>
     <li class="list-group-item">
       <span class="badge badge-primary badge-pill">DEF</span>
-      {{ players[1].forename }} {{ players[1].surname }}
-      <button type="button" class="btn btn-success pull-right">Add</button>
-      <button type="button" class="btn btn-danger pull-right">Remove</button>
+      <span *ngIf="defenders[1]">
+        {{ defenders[1].forename }} {{ defenders[1].surname }}
+      </span>
+      <span *ngIf="!defenders[1]">
+        <button type="button" class="btn btn-success pull-right" (click)="svc.navToAdd('defender')">Add</button>
+      </span>
+      <span *ngIf="defenders[1]">
+        <button type="button" class="btn btn-danger pull-right" (click)="svc.removePlayer(defenders[1].id)">Remove</button>
+      </span>
     </li>
     <li class="list-group-item">
       <span class="badge badge-primary badge-pill">DEF</span>
-      {{ players[2].forename }} {{ players[2].surname }}
-      <button type="button" class="btn btn-success pull-right">Add</button>
-      <button type="button" class="btn btn-danger pull-right">Remove</button>
+      <span *ngIf="defenders[2]">
+        <span> {{ defenders[2].forename }} {{ defenders[2].surname }} </span>
+      </span>
+      <span *ngIf="!defenders[2]">
+        <button type="button" class="btn btn-success pull-right" (click)="svc.navToAdd('defender')">Add</button>
+      </span>
+      <span *ngIf="defenders[2]">
+        <button type="button" class="btn btn-danger pull-right" (click)="svc.removePlayer(defenders[2].id)">Remove</button>
+      </span>
     </li>
     <li class="list-group-item">
       <span class="badge badge-primary badge-pill">DEF</span>
-      {{ players[3].forename }} {{ players[3].surname }}
-      <button type="button" class="btn btn-success pull-right">Add</button>
-      <button type="button" class="btn btn-danger pull-right">Remove</button>
+      <span *ngIf="defenders[3]">
+        {{ defenders[3].forename }} {{ defenders[3].surname }}
+      </span>
+      <span *ngIf="!defenders[3]">
+        <button type="button" class="btn btn-success pull-right" (click)="svc.navToAdd('defender')">Add</button>
+      </span>
+      <span *ngIf="defenders[3]">
+        <button type="button" class="btn btn-danger pull-right" (click)="svc.removePlayer(defenders[3].id)">Remove</button>
+        </span>
     </li>
+  </ol>
+  <ol class="list-group list-group-flush" *ngIf="resolved">
     <li class="list-group-item">
-      <span class="badge badge-primary badge-pill">DEF</span>
-      {{ players[4].forename }} {{ players[4].surname }}
-      <button type="button" class="btn btn-success pull-right">Add</button>
-      <button type="button" class="btn btn-danger pull-right">Remove</button>
+      <span class="badge badge-warning badge-pill">MF</span>
+      <span *ngIf="midfielders[0]">
+        {{ midfielders[0].forename }} {{ midfielders[0].surname }}
+      </span>
+      <span *ngIf="!midfielders[0]">
+        <button type="button" class="btn btn-success pull-right" (click)="svc.navToAdd('midfielder')">Add</button>
+      </span>
+      <span *ngIf="midfielders[0]">
+        <button type="button" class="btn btn-danger pull-right" (click)="svc.removePlayer(midfielders[0].id)">Remove</button>
+      </span>
     </li>
     <li class="list-group-item">
       <span class="badge badge-warning badge-pill">MF</span>
-      {{ players[5].forename }} {{ players[5].surname }}
-      <button type="button" class="btn btn-success pull-right">Add</button>
-      <button type="button" class="btn btn-danger pull-right">Remove</button>
+      <span *ngIf="midfielders[1]">
+        {{ midfielders[1].forename }} {{ midfielders[1].surname }}
+      </span>
+      <span *ngIf="!midfielders[1]">
+        <button type="button" class="btn btn-success pull-right" (click)="svc.navToAdd('midfielder')">Add</button>
+      </span>
+      <span *ngIf="midfielders[1]">
+        <button type="button" class="btn btn-danger pull-right" (click)="svc.removePlayer(midfielders[1].id)">Remove</button>
+      </span>
     </li>
     <li class="list-group-item">
       <span class="badge badge-warning badge-pill">MF</span>
-      {{ players[6].forename }} {{ players[6].surname }}
-      <button type="button" class="btn btn-success pull-right">Add</button>
-      <button type="button" class="btn btn-danger pull-right">Remove</button>
+      <span *ngIf="midfielders[2]">
+        {{ midfielders[2].forename }} {{ midfielders[2].surname }}
+      </span>
+      <span *ngIf="!midfielders[2]">
+        <button type="button" class="btn btn-success pull-right" (click)="svc.navToAdd('midfielder')">Add</button>
+      </span>
+      <span *ngIf="midfielders[2]">
+        <button type="button" class="btn btn-danger pull-right" (click)="svc.removePlayer(midfielders[2].id)">Remove</button>
+      </span>
     </li>
     <li class="list-group-item">
       <span class="badge badge-warning badge-pill">MF</span>
-      {{ players[7].forename }} {{ players[7].surname }}
-      <button type="button" class="btn btn-success pull-right">Add</button>
-      <button type="button" class="btn btn-danger pull-right">Remove</button>
+      <span *ngIf="midfielders[3]">
+        {{ midfielders[3].forename }} {{ midfielders[3].surname }}
+      </span>
+      <span *ngIf="!midfielders[3]">
+        <button type="button" class="btn btn-success pull-right" (click)="svc.navToAdd('midfielder')">Add</button>
+      </span>
+      <span *ngIf="midfielders[3]">
+        <button type="button" class="btn btn-danger pull-right" (click)="svc.removePlayer(midfielders[3].id)">Remove</button>
+      </span>
     </li>
+  </ol>
+  <ol class="list-group list-group-flush" *ngIf="resolved">
     <li class="list-group-item">
-      <span class="badge badge-warning badge-pill">MF</span>
-      {{ players[8].forename }} {{ players[8].surname }}
-      <button type="button" class="btn btn-success pull-right">Add</button>
-      <button type="button" class="btn btn-danger pull-right">Remove</button>
+      <span class="badge badge-danger badge-pill">STR</span>
+      <span *ngIf="forwards[0]">
+        {{ forwards[0].forename }} {{ forwards[0].surname }}
+      </span>
+      <span *ngIf="!forwards[0]">
+        <button type="button" class="btn btn-success pull-right" (click)="svc.navToAdd('forward')">Add</button>
+      </span>
+      <span *ngIf="forwards[0]">
+        <button type="button" class="btn btn-danger pull-right" (click)="svc.removePlayer(forwards[0].id)">Remove</button>
+      </span>
     </li>
     <li class="list-group-item">
       <span class="badge badge-danger badge-pill">STR</span>
-      {{ players[9].forename }} {{ players[9].surname }}
-      <button type="button" class="btn btn-success pull-right">Add</button>
-      <button type="button" class="btn btn-danger pull-right">Remove</button>
-    </li>
-    <li class="list-group-item">
-      <span class="badge badge-danger badge-pill">STR</span>
-      {{ players[10].forename }} {{ players[10].surname }}
-      <button type="button" class="btn btn-success pull-right">Add</button>
-      <button type="button" class="btn btn-danger pull-right">Remove</button>
+      <span *ngIf="forwards[1]">
+        {{ forwards[1].forename }} {{ forwards[1].surname }}
+      </span>
+      <span *ngIf="!forwards[1]">
+        <button type="button" class="btn btn-success pull-right" (click)="svc.navToAdd('forward')">Add</button>
+      </span>
+      <span *ngIf="forwards[1]">
+        <button type="button" class="btn btn-danger pull-right" (click)="svc.removePlayer(forwards[1].id)">Remove</button>
+      </span>
     </li>
   </ol>
 </div>

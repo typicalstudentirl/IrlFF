@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using IrlFF.Data.Models;
 using IrlFF.Data.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -31,14 +32,26 @@ namespace IrlFF.Web.Controllers
             return Ok(teamPlayer);
         }
 
-        // DELETE: api/TeamPlayer/
-        public ActionResult<bool> Delete(TeamPlayer teamPlayer)
+        // POST: api/TeamPlayer/
+        [HttpPost (Name = "AddTeamPlayer")]
+        public ActionResult<TeamPlayer> Post(TeamPlayer teamPlayer)
         {
-            if (teamPlayer == null)
+            if (teamPlayer.PlayerId == 0 || teamPlayer.TeamId == 0)
             {
                 return NotFound();
             }
-            return _service.DeleteTeamPlayer(teamPlayer);
+            return _service.AddTeamPlayer(teamPlayer.TeamId, teamPlayer.PlayerId);
+        }
+
+        // DELETE: api/TeamPlayer/
+        [HttpDelete(Name = "DeleteTeamPlayer")]
+        public ActionResult<bool> Delete([FromBody] TeamPlayer teamPlayer)
+        {
+            if (teamPlayer.PlayerId == 0 || teamPlayer.TeamId == 0)
+            {
+                return NotFound();
+            }
+            return _service.DeleteTeamPlayer(teamPlayer.TeamId, teamPlayer.PlayerId);
         }
     }
 }

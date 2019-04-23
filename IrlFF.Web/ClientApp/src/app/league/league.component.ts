@@ -9,7 +9,6 @@ export class LeagueComponent {
   public teams: Team[];
 
   constructor(private http: HttpClient, @Inject('BASE_URL') public baseUrl: string) { }
-
   ngOnInit() {
     let token = localStorage.getItem("jwt");
     this.http.get<Team[]>(this.baseUrl + 'api/Team/?orderBy=TotalPoints', {
@@ -23,8 +22,7 @@ export class LeagueComponent {
       for (let i = 0; i < result.length; i++) {
         result[i].rank = i + 1;
       }
-
-      }, error =>
+    }, error =>
           console.error(error));
   }
 }

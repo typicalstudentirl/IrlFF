@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelper } from 'angular2-jwt';
 import { HomeService } from './home.service'
+import { tap, map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +11,12 @@ import { HomeService } from './home.service'
 
 
 export class HomeComponent implements OnInit {
-  public players: Player[]
-  public goalkeepers: Player[]
-  public defenders: Player[]
-  public midfielders: Player[]
-  public forwards: Player[]
+  public players: Player[];
+  public goalkeepers: Player[];
+  public defenders: Player[];
+  public midfielders: Player[];
+  public forwards: Player[];
+  public resolved: boolean;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') public baseUrl: string, public svc: HomeService, private jwtHelper: JwtHelper) { }
 
@@ -26,30 +28,31 @@ export class HomeComponent implements OnInit {
     // Get team where team.userid = token.userid
     this.http.get<Player[]>(this.baseUrl + 'api/TeamPlayer/' + decodedToken.UserId)
       .subscribe(result => {
-        this.players = result;
+        this.resolved = false;
+        this.goalkeepers = [];
+        this.defenders = [];
+        this.midfielders = [];
+        this.forwards = [];
+        for (let i = 0; i < result.length; i++) {
+          if (result[i].position == 1) {
+            this.goalkeepers.push(result[i]);
+          }
+
+          if (result[i].position == 2) {
+            this.defenders.push(result[i]);
+          }
+
+          if (result[i].position == 3) {
+            this.midfielders.push(result[i]);
+          }
+
+          if (result[i].position == 4) {
+            this.forwards.push(result[i]);
+          }
+        } this.resolved = true;
       }, error => console.error(error));
-
-    this.svc.getGoalkeepers()
-      .subscribe(gks => {
-        this.goalkeepers = gks;
-      }, error => console.log(error));
-
-    this.svc.getDefenders()
-      .subscribe(dfs => {
-        this.defenders = dfs;
-      }, error => console.log(error));
-
-    this.svc.getMidfielders()
-      .subscribe(mfs => {
-        this.midfielders = mfs;
-      }, error => console.log(error));
-
-    this.svc.getForwards()
-      .subscribe(frds => {
-        this.forwards = frds;
-      }, error => console.log(error));
     }
-  }
+}
 
 interface Player {
   id: number;

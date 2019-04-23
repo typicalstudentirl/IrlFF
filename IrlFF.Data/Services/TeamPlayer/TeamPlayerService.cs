@@ -23,11 +23,18 @@ namespace IrlFF.Data.Services
 
         public TeamPlayer AddTeamPlayer(int TeamId, int PlayerId)
         {
-            TeamPlayer tp = new TeamPlayer  { TeamId = TeamId, PlayerId = PlayerId};
+            TeamPlayer tp = new TeamPlayer { TeamId = TeamId, PlayerId = PlayerId };
 
             ctx.TeamPlayer.Add(tp);
-            ctx.SaveChanges();
-            return tp;
+            try
+            {
+                ctx.SaveChanges();
+                return tp;
+            }
+            catch (DbUpdateException e)
+            {
+                throw e;
+            }
         }
 
         public IList<Player> GetPlayersByTeamId(int teamId)
@@ -48,13 +55,13 @@ namespace IrlFF.Data.Services
             return players;
         }
 
-        public bool DeleteTeamPlayer(TeamPlayer teamPlayer)
+        public bool DeleteTeamPlayer(int teamId, int playerId)
         {
-            if (teamPlayer == null)
+            TeamPlayer teamPlayer = new TeamPlayer
             {
-                return false;
-            }
-
+                TeamId = teamId,
+                PlayerId = playerId
+            };
             ctx.TeamPlayer.Remove(teamPlayer);
             ctx.SaveChanges();
             return true;

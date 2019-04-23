@@ -317,8 +317,8 @@ namespace IrlFF.Data
             teamPlayerSvc.AddTeamPlayer(2, 14);
             teamPlayerSvc.AddTeamPlayer(2, 15);
             teamPlayerSvc.AddTeamPlayer(2, 17);
-            teamPlayerSvc.AddTeamPlayer(2, 20);
-            teamPlayerSvc.AddTeamPlayer(2, 22);
+            teamPlayerSvc.AddTeamPlayer(2, 23);
+            teamPlayerSvc.AddTeamPlayer(2, 24);
             #endregion  
         }
     }
