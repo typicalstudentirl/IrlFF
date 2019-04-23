@@ -97,12 +97,12 @@ namespace IrlFF.Data.Repositories
             new Club
             {
                 Id = 9,
-                ClubName = "Waterford"
+                ClubName = "U.C.D"
             },
             new Club
             {
                 Id = 10,
-                ClubName = "U.C.D"
+                ClubName = "Waterford"
             });
             #endregion
         }

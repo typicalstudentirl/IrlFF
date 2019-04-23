@@ -4,7 +4,7 @@
 <table class='table table-striped' *ngIf="fixtures">
   <thead>
     <tr>
-      <th>Week</th>
+      <th style="border-right-style: solid; border-right-color: dimgray">Week</th>
       <th>Home</th>
       <th>Away</th>
       <th>Date</th>
@@ -14,7 +14,7 @@
   <tbody>
     <ng-container *ngFor="let fixture of fixtures | paginate: { itemsPerPage: 1, currentPage: p };">
       <tr *ngFor="let match of fixture.matches">
-        <td>{{fixture.id}}</td>
+        <td style="border-right-style: solid; border-right-color: dimgray">{{fixture.id}}</td>
         <td>{{ match.homeClub }}</td>
         <td>{{ match.awayClub }}</td>
         <td>{{ match.date | date: 'short'}}</td>
