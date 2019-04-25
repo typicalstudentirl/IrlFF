@@ -17,10 +17,11 @@ namespace IrlFF.Data.Repositories
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
+                //.UseSqlServer(@"Server=tcp:irlff.database.windows.net,1433;Initial Catalog=IrlFFDb;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
                 .UseSqlServer(@"Server = (localdb)\mssqllocaldb; Database = IrlFF; Trusted_Connection = True; ConnectRetryCount = 0;");
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TeamPlayer>()
                 .HasKey(tp => new { tp.TeamId, tp.PlayerId });

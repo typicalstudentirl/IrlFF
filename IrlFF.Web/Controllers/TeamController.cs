@@ -23,7 +23,7 @@ namespace IrlFF.Web.Controllers
         public ActionResult<IList<Team>> Get(string orderby)
         {
             IList<Team> teams = _service.GetTeams(orderby);
-            return teams.ToList<Team>();
+            return teams.ToList();
         }
 
         // GET: api/Team/5
@@ -47,7 +47,7 @@ namespace IrlFF.Web.Controllers
 
         // PUT: api/Team/5
         [HttpPut("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public void Put(int id, [FromBody] Team team)
         {
                 _service.UpdateTeam(team);

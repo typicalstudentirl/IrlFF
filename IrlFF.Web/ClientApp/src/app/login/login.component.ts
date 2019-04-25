@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent {
   invalidLogin: boolean;
-
+  debugger;
   constructor(private router: Router, private http: HttpClient, @Inject('BASE_URL') public baseUrl: string) { }
 
   login(form: NgForm) {

@@ -23,6 +23,8 @@ import { RegisterService } from './register/register.service'
 import { JwtHelper } from 'angular2-jwt';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
       { path: 'defender', component: DefenderTransferComponent },
       { path: 'midfielder', component: MidfielderTransferComponent },
       { path: 'forward', component: ForwardTransferComponent },
-    ])
+    ]),
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AuthGuard, JwtHelper, HomeService, RegisterService],
   bootstrap: [AppComponent]

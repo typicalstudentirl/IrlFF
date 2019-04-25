@@ -50,7 +50,7 @@ namespace IrlFF.Web.Controllers
         }
 
         // PUT: api/Player/5
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] Player player)
         {

@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IrlFF.Web.Controllers
 {
-    [Authorize (Roles = "Administrator")]
     [Route("api/[controller]")]
     [ApiController]
     public class ClubController : ControllerBase

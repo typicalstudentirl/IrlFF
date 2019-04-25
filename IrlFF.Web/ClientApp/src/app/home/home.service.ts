@@ -83,11 +83,10 @@ export class HomeService {
       })
     }).subscribe(
       result => {
-        this.router.navigate['/'];
+        this.router.navigate(["/"]);
       }
     ), error => console.log(error)
-  } 
-
+  }
 }
 
 interface Player {
