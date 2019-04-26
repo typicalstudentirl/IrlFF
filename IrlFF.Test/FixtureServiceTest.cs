@@ -17,7 +17,7 @@ namespace IrlFF.Test
         }
 
         [Fact]
-        public void GetFixtures_Not_Null()
+        public void FixtureService_GetFixtures_Success()
         {
             IList<Fixture> f = svc.GetFixtures();
 

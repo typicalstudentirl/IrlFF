@@ -18,7 +18,7 @@ namespace IrlFF.Data.Services
         /// <summary>
         /// Used to initialise the database - use with care
         /// </summary>
-        public void Initialise()
+        public void Initialize()
         {
             ctx.Database.EnsureDeleted();
             ctx.Database.EnsureCreated();
@@ -29,21 +29,6 @@ namespace IrlFF.Data.Services
         {
             return ctx.User.FirstOrDefault(u => u.Id == id);
         }
-
-        //public bool GetUsers(string username=null)
-        //{
-        //    bool unique = true;
-        //    User[] users = ctx.User.ToArray<User>();
-        //    foreach (User user in users)
-        //    {
-        //        if (username == user.UserName)
-        //        {
-        //            unique = false;
-        //        }
-        //    }
-        //    return unique;
-        //}
-
 
         public User[] GetUsers()
         {
@@ -81,11 +66,11 @@ namespace IrlFF.Data.Services
                 return u.Id;
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                 throw ex;
+                throw ex;
             }
-            
+
         }
     }
 }

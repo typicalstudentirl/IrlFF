@@ -1,13 +1,12 @@
 ﻿using IrlFF.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace IrlFF.Data.Services
 {
     public interface IUserService
     {
         // User management
+        void Initialize();
+
         int RegisterUser(User u);
 
         User GetUserById(int id);

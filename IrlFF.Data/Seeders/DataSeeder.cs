@@ -60,222 +60,222 @@ namespace IrlFF.Data
             #endregion
 
             #region Seed Players
-            #region Derry GK + Defenders
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Peter",
-                Surname = "Cherrie",
-                TotalPoints = 4,
-                Position = Position.Goalkeeper,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Nathan",
-                Surname = "Gartside",
-                TotalPoints = 2,
-                Position = Position.Goalkeeper,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Rhys",
-                Surname = "McDermott",
-                TotalPoints = 0,
-                Position = Position.Defender,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Connor",
-                Surname = "McDermott",
-                TotalPoints = 4,
-                Position = Position.Defender,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Ciaran",
-                Surname = "Coll",
-                TotalPoints = 1,
-                Position = Position.Defender,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Eoin",
-                Surname = "Toal",
-                TotalPoints = 0,
-                Position = Position.Defender,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Patrick",
-                Surname = "McClean",
-                TotalPoints = 0,
-                Position = Position.Defender,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Darren",
-                Surname = "Cole",
-                TotalPoints = 0,
-                Position = Position.Defender,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Josh",
-                Surname = "Kerr",
-                TotalPoints = 0,
-                Position = Position.Defender,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Ally",
-                Surname = "Gilchrist",
-                TotalPoints = 0,
-                Position = Position.Defender,
-                ClubId = 3,
-            });
-            #endregion
+            //#region Derry GK + Defenders
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Peter",
+            //    Surname = "Cherrie",
+            //    TotalPoints = 4,
+            //    Position = Position.Goalkeeper,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Nathan",
+            //    Surname = "Gartside",
+            //    TotalPoints = 2,
+            //    Position = Position.Goalkeeper,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Rhys",
+            //    Surname = "McDermott",
+            //    TotalPoints = 0,
+            //    Position = Position.Defender,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Connor",
+            //    Surname = "McDermott",
+            //    TotalPoints = 4,
+            //    Position = Position.Defender,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Ciaran",
+            //    Surname = "Coll",
+            //    TotalPoints = 1,
+            //    Position = Position.Defender,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Eoin",
+            //    Surname = "Toal",
+            //    TotalPoints = 0,
+            //    Position = Position.Defender,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Patrick",
+            //    Surname = "McClean",
+            //    TotalPoints = 0,
+            //    Position = Position.Defender,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Darren",
+            //    Surname = "Cole",
+            //    TotalPoints = 0,
+            //    Position = Position.Defender,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Josh",
+            //    Surname = "Kerr",
+            //    TotalPoints = 0,
+            //    Position = Position.Defender,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Ally",
+            //    Surname = "Gilchrist",
+            //    TotalPoints = 0,
+            //    Position = Position.Defender,
+            //    ClubId = 3,
+            //});
+            //#endregion
 
-            #region Derry Midfielders
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Brendan",
-                Surname = "Barr",
-                TotalPoints = 0,
-                Position = Position.Midfielder,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Conor",
-                Surname = "Gormley",
-                TotalPoints = 0,
-                Position = Position.Midfielder,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Ciaron",
-                Surname = "Harkin",
-                TotalPoints = 0,
-                Position = Position.Midfielder,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Greg",
-                Surname = "Sloggett",
-                TotalPoints = 0,
-                Position = Position.Midfielder,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Jamie",
-                Surname = "McDonagh",
-                TotalPoints = 0,
-                Position = Position.Midfielder,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Gerardo",
-                Surname = "Bruna",
-                TotalPoints = 0,
-                Position = Position.Midfielder,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Adrian",
-                Surname = "Delap",
-                TotalPoints = 0,
-                Position = Position.Midfielder,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Evan",
-                Surname = "Tweed",
-                TotalPoints = 0,
-                Position = Position.Midfielder,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Shane",
-                Surname = "McNamee",
-                TotalPoints = 0,
-                Position = Position.Midfielder,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Gianni",
-                Surname = "Seraf",
-                TotalPoints = 0,
-                Position = Position.Midfielder,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Barry",
-                Surname = "McNamee",
-                TotalPoints = 0,
-                Position = Position.Midfielder,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Ronan",
-                Surname = "McKinley",
-                TotalPoints = 0,
-                Position = Position.Midfielder,
-                ClubId = 3,
-            });
-            #endregion
+            //#region Derry Midfielders
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Brendan",
+            //    Surname = "Barr",
+            //    TotalPoints = 0,
+            //    Position = Position.Midfielder,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Conor",
+            //    Surname = "Gormley",
+            //    TotalPoints = 0,
+            //    Position = Position.Midfielder,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Ciaron",
+            //    Surname = "Harkin",
+            //    TotalPoints = 0,
+            //    Position = Position.Midfielder,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Greg",
+            //    Surname = "Sloggett",
+            //    TotalPoints = 0,
+            //    Position = Position.Midfielder,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Jamie",
+            //    Surname = "McDonagh",
+            //    TotalPoints = 0,
+            //    Position = Position.Midfielder,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Gerardo",
+            //    Surname = "Bruna",
+            //    TotalPoints = 0,
+            //    Position = Position.Midfielder,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Adrian",
+            //    Surname = "Delap",
+            //    TotalPoints = 0,
+            //    Position = Position.Midfielder,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Evan",
+            //    Surname = "Tweed",
+            //    TotalPoints = 0,
+            //    Position = Position.Midfielder,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Shane",
+            //    Surname = "McNamee",
+            //    TotalPoints = 0,
+            //    Position = Position.Midfielder,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Gianni",
+            //    Surname = "Seraf",
+            //    TotalPoints = 0,
+            //    Position = Position.Midfielder,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Barry",
+            //    Surname = "McNamee",
+            //    TotalPoints = 0,
+            //    Position = Position.Midfielder,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Ronan",
+            //    Surname = "McKinley",
+            //    TotalPoints = 0,
+            //    Position = Position.Midfielder,
+            //    ClubId = 3,
+            //});
+            //#endregion
 
-            #region Derry Attackers
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "David",
-                Surname = "Parkhouse",
-                TotalPoints = 0,
-                Position = Position.Forward,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Michael",
-                Surname = "McCrudden",
-                TotalPoints = 0,
-                Position = Position.Forward,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Junior",
-                Surname = "Ogedi-Uzokwe",
-                TotalPoints = 0,
-                Position = Position.Forward,
-                ClubId = 3,
-            });
-            playerSvc.AddPlayer(new Player
-            {
-                Forename = "Eoghan",
-                Surname = "Stokes",
-                TotalPoints = 0,
-                Position = Position.Forward,
-                ClubId = 3,
-            });
-            #endregion
+            //#region Derry Attackers
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "David",
+            //    Surname = "Parkhouse",
+            //    TotalPoints = 0,
+            //    Position = Position.Forward,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Michael",
+            //    Surname = "McCrudden",
+            //    TotalPoints = 0,
+            //    Position = Position.Forward,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Junior",
+            //    Surname = "Ogedi-Uzokwe",
+            //    TotalPoints = 0,
+            //    Position = Position.Forward,
+            //    ClubId = 3,
+            //});
+            //playerSvc.AddPlayer(new Player
+            //{
+            //    Forename = "Eoghan",
+            //    Surname = "Stokes",
+            //    TotalPoints = 0,
+            //    Position = Position.Forward,
+            //    ClubId = 3,
+            //});
+            //#endregion
             #endregion
 
             #region Seed Teams

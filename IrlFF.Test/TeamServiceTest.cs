@@ -8,38 +8,27 @@ namespace IrlFF.Test
     public class TeamServiceTest
     {
         private readonly ITeamService svc;
-
+        private readonly IUserService userSvc;
         public TeamServiceTest()
         {
             svc = new TeamService();
+            userSvc = new UserService();
             //Restore test data to DB before each test
             svc.Initialize();
+            
         }
-
+        
         [Fact]
-        public void Add_New_Team_Should_Be_Found()
-        {
-            Team t = new Team { Forename = "Stephen", Surname = "McGowan", TeamName = "Fantasy Eleven" };
-
-            t = svc.AddTeam(t);
-
-            Team t2 = svc.GetTeamById(t.Id);
-
-            Assert.Equal(t, t2);
-        }
-
-        [Fact]
-        public void Add_New_Clubs_To_Empty_DB_Should_Be_Found()
+        public void TeamService_AddTeam_GetTeams_Success()
         {
             IList<Team> teamTest = svc.GetTeams();
 
-            Team t = new Team { Forename = "Stephen", Surname = "McGowan", TeamName = "Galacticos" };
+            User u = new User { ForeName = "Test", SurName = "Test", Password = "Test", Role = Role.User, UserName = "TestUsername" };
+            u.Id = userSvc.RegisterUser(u);
+            Team t = new Team { Forename = "Test", Surname = "Test", TeamName = "TestTeamName", UserId = u.Id };
             teamTest.Add(t);
-            Team t2 = new Team { Forename = "Lee", Surname = "Deehan", TeamName = "Best XI" };
-            teamTest.Add(t2);
 
             t = svc.AddTeam(t);
-            t2 = svc.AddTeam(t2);
 
             IList<Team> teams = svc.GetTeams();
 
@@ -47,9 +36,11 @@ namespace IrlFF.Test
         }
 
         [Fact]
-        public void Update_Existing_Club_Check_Result()
+        public void TeamService_UpdateTeamPoints_GetTeamById_Success()
         {
-            Team t = new Team { Forename = "Stephen", Surname = "McGowan", TeamName = "Galacticos" };
+            User u = new User { ForeName = "Test", SurName = "Test", Password = "Test", Role = Role.User, UserName = "TestUsername" };
+            userSvc.RegisterUser(u);
+            Team t = new Team { Forename = "Test", Surname = "Test", TeamName = "TestTeamName", UserId = u.Id };
             t = svc.AddTeam(t);
             t.TotalPoints = 20;
             svc.UpdateTeam(t);

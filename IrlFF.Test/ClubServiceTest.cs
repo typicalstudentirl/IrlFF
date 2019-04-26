@@ -17,7 +17,7 @@ namespace IrlFF.Test
         }
 
         [Fact]
-        public void Add_New_Club_To_Empty_DB_Should_Be_Found_By_Id()
+        public void ClubService_AddNewClub_Success()
         {
             Club c = new Club { ClubName = "Bohemian FC" };
 
@@ -29,7 +29,7 @@ namespace IrlFF.Test
         }
 
         [Fact]
-        public void Add_New_Clubs_To_Empty_DB_Should_Be_Found()
+        public void ClubService_GetClubs_Success()
         {
             Club c = new Club { ClubName = "Test Club" };
 
@@ -41,7 +41,18 @@ namespace IrlFF.Test
         }
 
         [Fact]
-        public void Add_New_Club_To_Empty_DB_Then_Delete_Should_Not_Be_Found()
+        public void ClubService_GetClubById_Success()
+        {
+            Club c = new Club { ClubName = "Test Club" };
+
+            c = svc.AddClub(c);
+
+            Club newClub = svc.GetClubById(c.Id);
+
+            Assert.Equal(c, newClub);
+        }
+        [Fact]
+        public void ClubService_AddClubDeleteClub_Success()
         {
             Club c = new Club { ClubName = "Bohemian FC" };
 
