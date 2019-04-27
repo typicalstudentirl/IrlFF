@@ -51,9 +51,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          return localStorage.getItem('currentUser');
-        },
+        tokenGetter: tokenGetter,
         whitelistedDomains: ['https://localhost'],
         blacklistedRoutes: []
       }
@@ -75,3 +73,7 @@ import { JwtModule } from '@auth0/angular-jwt';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function tokenGetter() {
+  return localStorage.getItem('currentUser');
+}
