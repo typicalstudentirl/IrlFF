@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { JwtHelper } from 'angular2-jwt';
 import { HttpClient, HttpParams, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable()
 export class HomeService {
@@ -14,7 +14,7 @@ export class HomeService {
   public teamPlayer: TeamPlayer;
 
 
-  constructor(private router: Router, private http: HttpClient, @Inject('BASE_URL') public baseUrl: string, private jwtHelper: JwtHelper) { }
+  constructor(private router: Router, private http: HttpClient, @Inject('BASE_URL') public baseUrl: string, private jwtHelper: JwtHelperService) { }
 
   public getGoalkeepers(): Observable<any> {
     return this.http.get<Player[]>(this.baseUrl + 'api/Player/?orderby=Goalkeeper');

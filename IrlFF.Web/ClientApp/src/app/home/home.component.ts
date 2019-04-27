@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { JwtHelper } from 'angular2-jwt';
 import { HomeService } from './home.service'
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { tap, map, switchMap } from 'rxjs/operators';
 
 @Component({
@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   public forwards: Player[];
   public resolved: boolean;
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') public baseUrl: string, public svc: HomeService, private jwtHelper: JwtHelper) { }
+  constructor(private http: HttpClient, @Inject('BASE_URL') public baseUrl: string, public svc: HomeService, private jwtHelper: JwtHelperService) { }
 
   ngOnInit() {
     // Check JWT token exists in cache

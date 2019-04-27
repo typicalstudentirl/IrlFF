@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { JwtHelper } from 'angular2-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-nav-menu',
@@ -8,7 +8,7 @@ import { JwtHelper } from 'angular2-jwt';
 })
 export class NavMenuComponent {
 
-  constructor(private jwtHelper: JwtHelper) { }
+  constructor(private jwtHelper: JwtHelperService) { }
 
   isExpanded = false;
 
@@ -21,11 +21,11 @@ export class NavMenuComponent {
   }
 
   logOut() {
-     localStorage.removeItem("jwt");
+     localStorage.removeItem("currentUser");
   }
 
   isUserAuthenticated() {
-    let token: string = localStorage.getItem("jwt");
+    let token: string = localStorage.getItem("currentUser");
     if (token != null) {
       if (token && !this.jwtHelper.isTokenExpired(token)) {
         return true;

@@ -20,11 +20,11 @@ import { ForwardTransferComponent } from './transfer/forward/forward-transfer.co
 import { AuthGuard } from './guards/auth-guard.service';
 import { HomeService } from './home/home.service'
 import { RegisterService } from './register/register.service'
-import { JwtHelper } from 'angular2-jwt';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -48,6 +48,16 @@ import { environment } from '../environments/environment';
     ReactiveFormsModule,
     BrowserModule,
     FormsModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('currentUser');
+        },
+        whitelistedDomains: ['https://localhost'],
+        blacklistedRoutes: []
+      }
+    }),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuard]},
       { path: 'fixture', component: FixtureComponent },
@@ -61,7 +71,7 @@ import { environment } from '../environments/environment';
     ]),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [AuthGuard, JwtHelper, HomeService, RegisterService],
+  providers: [AuthGuard, HomeService, RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

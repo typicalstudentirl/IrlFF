@@ -9,7 +9,6 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent {
   invalidLogin: boolean;
-  debugger;
   constructor(private router: Router, private http: HttpClient, @Inject('BASE_URL') public baseUrl: string) { }
 
   login(form: NgForm) {
@@ -19,8 +18,8 @@ export class LoginComponent {
         "Content-Type": "application/json"
       })
     }).subscribe(response => {
-      let token = (<any>response).token;
-      localStorage.setItem("jwt", token);
+      let user = (<any>response);
+      localStorage.setItem("currentUser", JSON.stringify(user));
       this.invalidLogin = false;
       this.router.navigate(["/"]);
     }, err => {

@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { HomeService } from '../../home/home.service'
-import { JwtHelper } from 'angular2-jwt';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Component({
@@ -15,7 +14,7 @@ export class DefenderTransferComponent implements OnInit {
   public searchDefs: string;
   public p: number = 1;
 
-  constructor(private http: HttpClient, private router: Router, private jwtHelper: JwtHelper, @Inject('BASE_URL') public baseUrl: string, public svc: HomeService) { }
+  constructor(private http: HttpClient, private router: Router, @Inject('BASE_URL') public baseUrl: string, public svc: HomeService) { }
 
 
   ngOnInit() {
