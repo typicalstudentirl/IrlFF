@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Component({
   selector: 'app-league',
@@ -7,6 +8,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class LeagueComponent {
   public teams: Team[];
+  public leagueSearch: string;
+  public p: number = 1;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') public baseUrl: string) { }
   ngOnInit() {

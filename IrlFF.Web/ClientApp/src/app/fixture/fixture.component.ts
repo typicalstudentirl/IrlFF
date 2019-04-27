@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FixtureComponent {
   public fixtures: Fixture;
-
+  public p: number = 1;
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     http.get<Fixture>(baseUrl + 'api/Fixture/').subscribe(result => {
       this.fixtures = result;

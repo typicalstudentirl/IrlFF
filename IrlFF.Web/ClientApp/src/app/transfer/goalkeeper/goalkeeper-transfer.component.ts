@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { HomeService } from '../../home/home.service'
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Component({
   selector: 'app-goalkeeper',
@@ -10,6 +11,8 @@ import { HomeService } from '../../home/home.service'
 
 export class GoalkeeperTransferComponent implements OnInit {
   public goalkeepers: Player[];
+  public searchGks: string;
+  public p: number = 1;
 
   constructor(private http: HttpClient, private router: Router, @Inject('BASE_URL') public baseUrl: string, public svc: HomeService) { }
   ngOnInit() {
