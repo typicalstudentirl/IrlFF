@@ -12,7 +12,11 @@ namespace IrlFF.Data.Services
 
         public UserService()
         {
-            ctx = new FFDbContext();
+            ctx = FFDbContextFactory.CreateCtx();
+        }
+        public UserService(FFDbContext _ctx)
+        {
+            ctx = _ctx;
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 using IrlFF.Data;
+using IrlFF.Data.Repositories;
 using IrlFF.Data.Services;
 using IrlFF.Web.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -6,10 +7,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using System;
 using System.Text;
 
 namespace IrlFF.Web
@@ -75,9 +78,29 @@ namespace IrlFF.Web
                 services.AddTransient<ITeamPlayerService, TeamPlayerService>();
                 services.AddTransient<IFixtureService, FixtureService>();
                 services.AddTransient<IUserService, UserService>();
-                #endregion
+            #endregion
 
-                services.AddMvc()
+            // Use SQL Database if in Azure, otherwise, Use local SSMS
+            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+            {
+                services.AddDbContext<FFDbContext>(options =>
+                        options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
+            }
+            else
+            {
+                //services.AddDbContext<FFDbContext>(options =>
+                //        options.UseSqlServer(@"Server=tcp:irlff.database.windows.net,1433;Initial Catalog=IrlFFDb;Persist Security Info=False;User ID=s6irladmin;Password=5Maxin2e;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=200;"));
+                services.AddDbContext<FFDbContext>(options =>
+                       options.UseSqlServer(@"Server = (localdb)\mssqllocaldb; Database = IrlFF; Trusted_Connection = True; ConnectRetryCount = 0;"));
+            }
+
+            // Automatically perform database migration
+            //services.BuildServiceProvider().GetService<FFDbContext>().Database.Migrate();
+
+            //var context = services.BuildServiceProvider().GetRequiredService<FFDbContext>();
+            //context.Database.EnsureCreated();
+
+            services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
 
@@ -89,15 +112,15 @@ namespace IrlFF.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider provider)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 // seeder recreates and seeds database on each execution
-                new DataSeeder(new PlayerService(), new ClubService(), new TeamService(), new TeamPlayerService(), new UserService()).Seed();
+                new DataSeeder().Seed();
             }
-            else
+            if (env.IsProduction() || env.IsStaging() || env.IsEnvironment("Staging_2"))
             {
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.

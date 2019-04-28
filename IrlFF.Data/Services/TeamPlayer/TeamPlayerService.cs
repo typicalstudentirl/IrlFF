@@ -12,7 +12,11 @@ namespace IrlFF.Data.Services
 
         public TeamPlayerService()
         {
-            ctx = new FFDbContext();
+            ctx = FFDbContextFactory.CreateCtx();
+        }
+        public TeamPlayerService(FFDbContext _ctx)
+        {
+            ctx = _ctx;
         }
 
         public void Initialize()

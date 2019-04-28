@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     // Check JWT token exists in cache
-    var token = localStorage.getItem("jwt");
+    var token = localStorage.getItem("currentUser");
     // if token == null decodeToken throws a console error here.
     var decodedToken = this.jwtHelper.decodeToken(token)
     // Get team where team.userid = token.userid

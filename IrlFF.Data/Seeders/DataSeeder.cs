@@ -1,30 +1,39 @@
 ﻿using IrlFF.Data.Models;
+using IrlFF.Data.Repositories;
 using IrlFF.Data.Services;
 
 namespace IrlFF.Data
 {
     public class DataSeeder
     {
-        private readonly PlayerService playerSvc;
+        private readonly IPlayerService playerSvc;
 
-        private readonly ClubService clubSvc;
+        private readonly IClubService clubSvc;
 
-        private readonly TeamService teamSvc;
+        private readonly ITeamService teamSvc;
 
-        private readonly TeamPlayerService teamPlayerSvc;
+        private readonly ITeamPlayerService teamPlayerSvc;
 
-        private readonly UserService userSvc;
+        private readonly IUserService userSvc;
 
-        public DataSeeder(PlayerService playerSvc, ClubService clubSvc, TeamService teamSvc, TeamPlayerService teamPlayerSvc, UserService userSvc)
+        public DataSeeder()
         {
-            this.playerSvc = playerSvc;
-            this.clubSvc = clubSvc;
-            this.teamSvc = teamSvc;
-            this.userSvc = userSvc;
-            this.teamPlayerSvc = teamPlayerSvc;
+            playerSvc = new PlayerService(FFDbContextFactory.CreateCtx());
+            clubSvc = new ClubService(FFDbContextFactory.CreateCtx());
+            teamSvc = new TeamService(FFDbContextFactory.CreateCtx());
+            userSvc = new UserService(FFDbContextFactory.CreateCtx());
+            teamPlayerSvc = new TeamPlayerService(FFDbContextFactory.CreateCtx());
             playerSvc.Initialize();
-            clubSvc.Initialize();
-            teamSvc.Initialize();
+        }
+
+        public DataSeeder(FFDbContext _ctx)
+        {
+            playerSvc = new PlayerService(_ctx);
+            clubSvc = new ClubService(_ctx);
+            teamSvc = new TeamService(_ctx);
+            userSvc = new UserService(_ctx);
+            teamPlayerSvc = new TeamPlayerService(_ctx);
+            playerSvc.Initialize();
         }
 
         public void Seed()

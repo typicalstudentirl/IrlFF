@@ -14,7 +14,11 @@ namespace IrlFF.Data.Services
 
         public FixtureService()
         {
-            ctx = new FFDbContext();
+            ctx = FFDbContextFactory.CreateCtx();
+        }
+        public FixtureService(FFDbContext _ctx)
+        {
+            ctx = _ctx;
         }
 
         public void Initialize()

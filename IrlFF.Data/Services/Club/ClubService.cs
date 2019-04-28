@@ -13,7 +13,11 @@ namespace IrlFF.Data.Services
 
         public ClubService()
         {
-            ctx = new FFDbContext();
+            ctx = FFDbContextFactory.CreateCtx();
+        }
+        public ClubService(FFDbContext _ctx)
+        {
+            ctx = _ctx;
         }
 
         public void Initialize()

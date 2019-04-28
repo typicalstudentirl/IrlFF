@@ -13,16 +13,11 @@ namespace IrlFF.Data.Repositories
         public DbSet<Fixture> Fixture { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Match> Matches { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder
-                .UseSqlServer(@"Server=tcp:irlff.database.windows.net,1433;Initial Catalog=IrlFFDb;Persist Security Info=False;User ID=s6irladmin;Password=5Maxin2e;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-                //.UseSqlServer(@"Server = (localdb)\mssqllocaldb; Database = IrlFF; Trusted_Connection = True; ConnectRetryCount = 0;");
-            optionsBuilder.EnableSensitiveDataLogging();
-        }
         
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+        // DB Context Constructor for Startup -- error on parameterless constructor.
+        public FFDbContext(DbContextOptions<FFDbContext> options) : base(options) { }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TeamPlayer>()
                 .HasKey(tp => new { tp.TeamId, tp.PlayerId });
