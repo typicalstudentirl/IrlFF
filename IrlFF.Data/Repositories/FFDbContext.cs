@@ -341,6 +341,13 @@ namespace IrlFF.Data.Repositories
                     ClubName = "Waterford"
                 });
             #endregion
+
+            #region Users
+            modelBuilder.Entity<User>()
+                .HasData(
+                new User { Id = -1, ForeName ="System", SurName = "Administrator", Password = "LOISystemAdmin", Role = Role.Administrator, UserName = "administrator"  }
+                );
+            #endregion
         }
     }
 }

@@ -203,10 +203,10 @@ namespace IrlFF.Data.Migrations
                     { 20, 3, "Gianni", 3, "Seraf", 0 },
                     { 18, 3, "Evan", 3, "Tweed", 0 },
                     { 16, 3, "Gerardo", 3, "Bruna", 0 },
-                    { 2, 3, "Nathan", 1, "Gartside", 2 },
+                    { 2, 3, "Nathan", 1, "Gartside", 0 },
                     { 3, 3, "Rhys", 2, "McDermott", 0 },
-                    { 4, 3, "Connor", 2, "McDermott", 4 },
-                    { 5, 3, "Ciaran", 2, "Coll", 1 },
+                    { 4, 3, "Connor", 2, "McDermott", 0 },
+                    { 5, 3, "Ciaran", 2, "Coll", 0 },
                     { 6, 3, "Eoin", 2, "Toal", 0 },
                     { 7, 3, "Patrick", 2, "McClean", 0 },
                     { 17, 3, "Adrian", 3, "Delap", 0 },
@@ -218,7 +218,7 @@ namespace IrlFF.Data.Migrations
                     { 14, 3, "Greg", 3, "Sloggett", 0 },
                     { 15, 3, "Jamie", 3, "McDonagh", 0 },
                     { 9, 3, "Josh", 2, "Kerr", 0 },
-                    { 1, 3, "Peter", 1, "Cherrie", 4 }
+                    { 1, 3, "Peter", 1, "Cherrie", 0 }
                 });
 
             migrationBuilder.CreateIndex(

@@ -38,7 +38,7 @@ export class HomeService {
 
   public removePlayer(playerId) {
     // Check JWT token exists in cache
-    var token = localStorage.getItem("jwt");
+    var token = localStorage.getItem("currentUser");
     // if token == null decodeToken throws a console error here.
     var decodedToken = this.jwtHelper.decodeToken(token)
     let userId = decodedToken.UserId;
@@ -66,7 +66,7 @@ export class HomeService {
 
   addToTeam(playerId) {
     // Check JWT token exists in cache
-    var token = localStorage.getItem("jwt");
+    var token = localStorage.getItem("currentUser");
     // if token == null decodeToken throws a console error here.
     var decodedToken = this.jwtHelper.decodeToken(token)
     let userId = decodedToken.UserId;

@@ -13,7 +13,7 @@ export class LeagueComponent {
 
   constructor(private http: HttpClient, @Inject('BASE_URL') public baseUrl: string) { }
   ngOnInit() {
-    let token = localStorage.getItem("jwt");
+    let token = localStorage.getItem("currentUser");
     this.http.get<Team[]>(this.baseUrl + 'api/Team/?orderBy=TotalPoints', {
       headers: new HttpHeaders({
         "Authorization": "Bearer " + token,
