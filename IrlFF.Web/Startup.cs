@@ -122,6 +122,14 @@ namespace IrlFF.Web
             }
             if (env.IsProduction() || env.IsStaging() || env.IsEnvironment("Staging_2"))
             {
+                using (var scope = provider.CreateScope())
+                {
+                    // now you can pretend you're inside of a normal Request Scope (somewhat)
+                    var dbContext = scope.ServiceProvider.GetRequiredService<FFDbContext>();
+
+                    dbContext.Database.Migrate();
+                }
+
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
