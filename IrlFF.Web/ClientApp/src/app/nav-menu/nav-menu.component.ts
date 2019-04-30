@@ -7,18 +7,13 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
+  navbarOpen = false;
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+  }
 
   constructor(private jwtHelper: JwtHelperService) { }
-
-  isExpanded = false;
-
-  collapse() {
-    this.isExpanded = false;
-  }
-
-  toggle() {
-    this.isExpanded = !this.isExpanded;
-  }
 
   logOut() {
      localStorage.removeItem("currentUser");

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 // App components
 import { AppComponent } from './app.component';
@@ -42,6 +43,7 @@ import { JwtModule } from '@auth0/angular-jwt';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    CollapseModule.forRoot(),
     HttpClientModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,

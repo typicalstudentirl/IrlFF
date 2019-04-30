@@ -94,12 +94,6 @@ namespace IrlFF.Web
                        options.UseSqlServer(@"Server = (localdb)\mssqllocaldb; Database = IrlFF; Trusted_Connection = True; ConnectRetryCount = 0;"));
             }
 
-            // Automatically perform database migration
-            //services.BuildServiceProvider().GetService<FFDbContext>().Database.Migrate();
-
-            //var context = services.BuildServiceProvider().GetRequiredService<FFDbContext>();
-            //context.Database.EnsureCreated();
-
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
