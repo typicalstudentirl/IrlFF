@@ -59,9 +59,7 @@ namespace IrlFF.Data.Services
                 .Include(p => p.Club).Where(p => p.Position == Position.Midfielder).ToList();
                 case "Forward":
                     return ctx.Player
-                .Include(p => p.Club)
-                .ThenInclude(C => C.ClubName)
-                .Where(p => p.Position == Position.Forward).ToList();
+                .Include(p => p.Club).Where(p => p.Position == Position.Forward).ToList();
                 default:
                     return ctx.Player.ToList();
             }
