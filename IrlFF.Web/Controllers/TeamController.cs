@@ -54,6 +54,7 @@ namespace IrlFF.Web.Controllers
         }
 
         //PUT: api/Team/
+        [Authorize(Roles = "Administrator")]
         public void Put()
         {
             _service.UpdateTeamPoints();

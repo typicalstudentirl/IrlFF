@@ -61,6 +61,7 @@ namespace IrlFF.Web.Controllers
         }
 
         //PUT: api/Player/
+        [Authorize(Roles = "Administrator")]
         [HttpPut]
         public ActionResult Put([FromBody] Player[] players)
         {
