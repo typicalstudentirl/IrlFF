@@ -59,10 +59,11 @@ namespace IrlFF.Data.Services
                 .Include(p => p.Club).Where(p => p.Position == Position.Midfielder).ToList();
                 case "Forward":
                     return ctx.Player
-                .Include(p => p.Club).Where(p => p.Position == Position.Forward).ToList();
+                .Include(p => p.Club)
+                .ThenInclude(C => C.ClubName)
+                .Where(p => p.Position == Position.Forward).ToList();
                 default:
-                    return ctx.Player
-                .Include(p => p.Club).ToList();
+                    return ctx.Player.ToList();
             }
         }
 
@@ -78,7 +79,7 @@ namespace IrlFF.Data.Services
             {
                 return false;
             }
-            ctx.Attach(p).State = EntityState.Modified; 
+            ctx.Attach(p).State = EntityState.Modified;
             ctx.SaveChanges();
             return true;
         }
@@ -94,6 +95,16 @@ namespace IrlFF.Data.Services
             ctx.Player.Remove(p);
             ctx.SaveChanges();
             return true;
+        }
+
+        public void UpdatePlayerPoints(Player[] players)
+        {
+            for (int i = 0; i < players.Length; i++)
+            {
+                players[i].TotalPoints = players[i].WeekPoints + players[i].TotalPoints;
+                ctx.Attach(players[i]).State = EntityState.Modified;
+                ctx.SaveChanges();
+            }
         }
     }
 }

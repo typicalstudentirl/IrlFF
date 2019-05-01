@@ -43,7 +43,7 @@ namespace IrlFF.Data.Services
 
         public IList<Player> GetPlayersByTeamId(int teamId)
         {
-            // Access DBContext, return all TeamPlayers where id = id
+            // Access DBContext, return all TeamPlayers where teamid = teamid
             List<TeamPlayer> tps = 
                 ctx.TeamPlayer
                 .Include(tp => tp.Player)

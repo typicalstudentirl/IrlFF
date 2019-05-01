@@ -17,6 +17,7 @@ import { GoalkeeperTransferComponent } from './transfer/goalkeeper/goalkeeper-tr
 import { DefenderTransferComponent } from './transfer/defender/defender-transfer.component';
 import { MidfielderTransferComponent } from './transfer/midfielder/midfielder-transfer.component';
 import { ForwardTransferComponent } from './transfer/forward/forward-transfer.component';
+import { InfoComponent } from './info/info.component';
 // App services
 import { AuthGuard } from './guards/auth-guard.service';
 import { HomeService } from './home/home.service'
@@ -40,6 +41,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     DefenderTransferComponent,
     MidfielderTransferComponent,
     ForwardTransferComponent,
+    InfoComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -68,6 +70,7 @@ import { JwtModule } from '@auth0/angular-jwt';
       { path: 'defender', component: DefenderTransferComponent },
       { path: 'midfielder', component: MidfielderTransferComponent },
       { path: 'forward', component: ForwardTransferComponent },
+      { path: 'info', component: InfoComponent },
     ]),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],

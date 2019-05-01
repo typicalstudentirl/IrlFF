@@ -1,14 +1,13 @@
 <h1>Fixtures</h1>
 
 <p *ngIf="!fixtures"><em>Loading...</em></p>
-<table class='table table-striped' *ngIf="fixtures">
+<table class='table table-striped' *ngIf="fixtures" id="fixtureTable">
   <thead>
     <tr>
-      <th style="border-right-style: solid; border-right-color: dimgray">Week</th>
+      <th style="border-right-style: solid; border-right-color: dimgray">GW</th>
       <th>Home</th>
       <th>Away</th>
       <th>Date</th>
-      <th>Location</th>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +17,6 @@
         <td>{{ match.homeClub }}</td>
         <td>{{ match.awayClub }}</td>
         <td>{{ match.date | date: 'short'}}</td>
-        <td>{{ match.location }}</td>
       </tr>
     </ng-container>
   </tbody>

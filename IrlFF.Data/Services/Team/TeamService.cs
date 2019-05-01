@@ -73,5 +73,21 @@ namespace IrlFF.Data.Services
             ctx.SaveChanges();
             return true;
         }
+
+        public void UpdateTeamPoints()
+        {
+            TeamPlayer[] tps = ctx.TeamPlayer
+                .Include(t => t.Team)
+                .Include(p => p.Player).ToArray();
+
+            for (int i = 0; i < tps.Length; i++)
+            {
+                    tps[i].Team.WeekPoints += tps[i].Player.WeekPoints;
+                    tps[i].Team.TotalPoints += tps[i].Player.WeekPoints;
+                    tps[i].Player.WeekPoints = 0;
+                    ctx.Attach(tps[i]).State = EntityState.Modified;
+                    ctx.SaveChanges();
+            }
+        }
     }
 }

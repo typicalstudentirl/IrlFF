@@ -14,6 +14,8 @@ namespace IrlFF.Data.Models
 
         public int TotalPoints { get; set; }
 
+        public int WeekPoints { get; set; }
+
         public int UserId { get; set; }
 
         public User User { get; set; }

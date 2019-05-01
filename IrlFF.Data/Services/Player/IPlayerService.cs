@@ -17,6 +17,8 @@ namespace IrlFF.Data.Services
 
         bool UpdatePlayer(Player p);
 
+        void UpdatePlayerPoints(Player[] players);
+
         bool DeletePlayer(int id);
     }
 }

@@ -6,7 +6,7 @@
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
   </div>
-  <input type="text" class="form-control" placeholder="Search for players by name/club.." [(ngModel)]="this.searchGks">
+  <input type="text" class="form-control" placeholder="Search for players by name.." [(ngModel)]="this.searchGks">
 </div>
 
 <table class='table table-hover table-striped ' *ngIf="goalkeepers">
@@ -19,7 +19,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let goalkeeper of goalkeepers | filter:filter | paginate: { itemsPerPage: 10, currentPage: p }; let i=index">
+    <tr *ngFor="let goalkeeper of goalkeepers | filter:searchGks | paginate: { itemsPerPage: 10, currentPage: p }; let i=index">
       <td>{{ goalkeeper.forename }} {{ goalkeeper.surname }}</td>
       <td>{{ goalkeeper.club.clubName }}</td>
       <td>{{ goalkeeper.totalPoints }}</td>

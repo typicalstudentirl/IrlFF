@@ -17,5 +17,7 @@ namespace IrlFF.Data.Services
 
         bool UpdateTeam(Team t);
 
+        void UpdateTeamPoints();
+
     }
 }

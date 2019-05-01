@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Net;
+using System.Net.Http;
 using IrlFF.Data.Models;
 using IrlFF.Data.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IrlFF.Web.Controllers
@@ -61,6 +60,21 @@ namespace IrlFF.Web.Controllers
             else return Ok();
         }
 
+        //PUT: api/Player/
+        [HttpPut]
+        public ActionResult Put([FromBody] Player[] players)
+        {
+            if (players.Length == 0)
+            {
+                return NoContent();
+            }
+            else
+            {
+                _service.UpdatePlayerPoints(players);
+                return Ok();
+            }
+            
+        }
         // DELETE: api/Player/5
         [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]

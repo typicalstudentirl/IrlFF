@@ -25,6 +25,8 @@ namespace IrlFF.Data.Models
 
         public int TotalPoints { get; set; }
 
+        public int WeekPoints { get; set; }
+
         public Position Position { get; set; }
 
         public int ClubId { get; set; } //Foreign Key property

@@ -13,3 +13,21 @@
     margin-left: 5px;
     margin-right: 5px;
 }
+
+.image {
+  height: 50em;
+  background-size: cover;
+  width: 100%;
+  background-image: url("./assets/LOIBack.jpg");
+  background-position: 50% 50%;
+  border-radius: 5px 5px 5px 5px;
+  position: center;
+
+}
+
+
+.p {
+  word-wrap: break-word;
+  text-align: justify;
+  text-justify: inter-word;
+}

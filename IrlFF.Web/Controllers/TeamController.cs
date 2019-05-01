@@ -19,7 +19,7 @@ namespace IrlFF.Web.Controllers
         }
 
         // GET: api/Team
-        [HttpGet (Name = "GetTeams")]
+        [HttpGet(Name = "GetTeams")]
         public ActionResult<IList<Team>> Get(string orderby)
         {
             IList<Team> teams = _service.GetTeams(orderby);
@@ -50,7 +50,14 @@ namespace IrlFF.Web.Controllers
         [Authorize(Roles = "Administrator")]
         public void Put(int id, [FromBody] Team team)
         {
-                _service.UpdateTeam(team);
+            _service.UpdateTeam(team);
         }
+
+        //PUT: api/Team/
+        public void Put()
+        {
+            _service.UpdateTeamPoints();
+        }
+
     }
 }
